@@ -1,0 +1,2 @@
+rootProject.name = "VSM'22"
+include ':app'

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "18353674681",
+    "project_id": "vsm-22",
+    "storage_bucket": "vsm-22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18353674681:android:e31ede7179875a1faffe68",
+        "android_client_info": {
+          "package_name": "com.example.vsm22"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18353674681-f650h5ibrcicieb3ir39cv7rc8efmik7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vsm22",
+            "certificate_hash": "093a158a88a14255d851e179a8058bd248eb66bd"
+          }
+        },
+        {
+          "client_id": "18353674681-0f91c1371fudbe7mk2ap46ptmm73daek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANk3QoBxwtwtQdYA9U1IG50DU_OF8diQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18353674681-0f91c1371fudbe7mk2ap46ptmm73daek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
