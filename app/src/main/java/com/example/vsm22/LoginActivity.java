@@ -7,13 +7,16 @@ import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vsm22.daos.UserDao;
@@ -40,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
     private GoogleSignInClient mGoogleSignInClient;
-    private SignInButton signInButton;
+    private CardView signInButton;
     private EditText email;
     private EditText password;
     @Override
@@ -48,8 +51,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        signInButton = findViewById(R.id.signInButton);
-        email = findViewById(R.id.email);
+        signInButton = findViewById(R.id.CV_login);
+        email = findViewById(R.id.username);
         password = findViewById(R.id.password);
         auth = FirebaseAuth.getInstance();
 
@@ -65,6 +68,8 @@ public class LoginActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                signInButton.setCardBackgroundColor(Color.parseColor("#D1B0C8"));
                 firebaseAuthWithGoogle();
             }
         });
