@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.username);
         password = findViewById(R.id.password);
         auth = FirebaseAuth.getInstance();
-
+        signInButton.setCardBackgroundColor(Color.parseColor("#CC55AA"));
         GoogleSignInOptions gso = new GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -114,6 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
+                            signInButton.setCardBackgroundColor(Color.parseColor("#CC55AA"));
                         }
                     }
                 });
