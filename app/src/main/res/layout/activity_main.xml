@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
@@ -23,11 +23,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/card_btr"
+                android:layout_width="109dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#584EED"
+                android:elevation="3dp"
+                android:src="@drawable/ic_baseline_call_24"
+                app:backgroundTint="#ff5e00"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.49"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/coordinatorLayout2"
+                app:maxImageSize="30dp"
+                app:tint="#ffffff" />
+
             <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/coordinatorLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent">
 
                 <com.google.android.material.bottomappbar.BottomAppBar
@@ -40,6 +58,8 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="10dp"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
@@ -47,7 +67,7 @@
                             android:id="@+id/LL_news_home"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.2"
+                            android:layout_weight="0.25"
                             android:orientation="vertical">
 
                             <ImageView
@@ -71,7 +91,7 @@
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.2"
+                            android:layout_weight="0.25"
                             android:orientation="vertical">
 
                             <ImageView
@@ -121,13 +141,14 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.2"
+                            android:layout_weight="0.10"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/iv_trading"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:src="@drawable/ic_baseline_lock_24" />
 
                             <TextView
@@ -135,17 +156,18 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
-                                android:text="Trading"
+                                android:text="LeaderBoard"
+                                android:layout_weight="0.5"
                                 android:textAlignment="center"
                                 android:textColor="#676767"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.2"
+                            android:layout_weight="0.10"
                             android:orientation="vertical">
 
                             <ImageView
@@ -160,10 +182,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
-                                android:text="Setting"
+                                android:text="Power Card"
                                 android:textAlignment="center"
                                 android:textColor="#676767"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
@@ -171,17 +193,6 @@
                 </com.google.android.material.bottomappbar.BottomAppBar>
 
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/card_btr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#584EED"
-                    android:elevation="3dp"
-                    android:src="@drawable/ic_baseline_call_24"
-                    app:backgroundTint="#ff5e00"
-                    app:layout_anchor="@id/app_bar"
-                    app:maxImageSize="30dp"
-                    app:tint="#ffffff" />
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
