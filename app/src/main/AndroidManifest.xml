@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VSM22">
-
+        <activity android:name=".SponsorsActivity"></activity>
         <activity android:name=".SelectorActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
