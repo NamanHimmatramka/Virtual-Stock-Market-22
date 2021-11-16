@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="180dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+       android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/background_stock_portfolio"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.39">
+
+        <ImageView
+            android:id="@+id/IV_stock"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.844"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.62"
+            app:srcCompat="@drawable/facebook" />
+
+        <TextView
+            android:id="@+id/TV_stockName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tata Steel"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.13" />
+
+        <TextView
+            android:id="@+id/TV_stocks_owned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stock Owned: "
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.14"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TV_stockName"
+            app:layout_constraintVertical_bias="0.13" />
+
+        <TextView
+            android:id="@+id/TV_stock_worth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Stock Price: "
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/TV_Net_Worth"
+            app:layout_constraintEnd_toEndOf="@+id/TV_stocks_owned"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/TV_stocks_owned"
+            app:layout_constraintTop_toBottomOf="@+id/TV_stocks_owned" />
+
+        <TextView
+            android:id="@+id/TV_Net_Worth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Stock Net Worth:"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/TV_stock_worth"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/TV_stock_worth"
+            app:layout_constraintTop_toBottomOf="@+id/TV_stock_worth" />
+
+        <TextView
+            android:id="@+id/TV_stock_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/TV_stock_worth"
+            app:layout_constraintStart_toEndOf="@+id/TV_stocks_owned"
+            app:layout_constraintTop_toTopOf="@+id/TV_stocks_owned"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/TV_stock_worth_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1000"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/TV_Net_Worth"
+            app:layout_constraintStart_toEndOf="@+id/TV_Rs"
+            app:layout_constraintTop_toBottomOf="@+id/TV_stocks_owned"
+            app:layout_constraintVertical_bias="0.428" />
+
+        <TextView
+            android:id="@+id/TV_stock_worth_number2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:text="Rs 10000"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/TV_Net_Worth"
+            app:layout_constraintStart_toEndOf="@+id/TV_Net_Worth"
+            app:layout_constraintTop_toBottomOf="@+id/TV_stock_worth"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/TV_Rs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rs "
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/TV_stock_worth"
+            app:layout_constraintEnd_toStartOf="@+id/TV_stock_worth_number"
+            app:layout_constraintHorizontal_bias="0.375"
+            app:layout_constraintStart_toEndOf="@+id/TV_stock_worth"
+            app:layout_constraintTop_toBottomOf="@+id/TV_stocks_owned"
+            app:layout_constraintVertical_bias="1.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

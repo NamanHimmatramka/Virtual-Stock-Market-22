@@ -33,6 +33,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.ArrayList;
+
 import static android.content.ContentValues.TAG;
 
 public class LoginActivity extends AppCompatActivity {
@@ -121,7 +123,13 @@ public class LoginActivity extends AppCompatActivity {
         if(user != null){
             User newUser = new User(user.getDisplayName(), user.getUid());
             UserDao userDao = new UserDao();
+            ArrayList<Integer> StocksInitial=new ArrayList<>();
+            StocksInitial.add(10);
+            StocksInitial.add(20);
+            StocksInitial.add(30);
+            newUser.noOfStocksOwned=StocksInitial;
             userDao.addUser(newUser);
+
             Intent selectorActivityIntent = new Intent(this, SelectorActivity.class);
             startActivity(selectorActivityIntent);
             finish();
