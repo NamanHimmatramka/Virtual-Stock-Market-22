@@ -99,13 +99,13 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
     }
 
     private class CryptoViewHolder extends RecyclerView.ViewHolder {
-        private TextView cryptoName,cryptoPriceInRupees,cryptoNetWorth;
+        private TextView cryptoName,cryptoPriceInRupees,cryptoNetWorth, cryptoOwned;
         public CryptoViewHolder(View itemView) {
             super(itemView);
             cryptoName=itemView.findViewById(R.id.TV_crypto_name);
             cryptoPriceInRupees=itemView.findViewById(R.id.TV_crypto_worth_number);
             cryptoNetWorth=itemView.findViewById(R.id.TV_crypto_worth_number2);
-
+            cryptoOwned = itemView.findViewById(R.id.TV_crypto_number);
         }}
 
     void RecyclerViewStock(View view){
@@ -129,12 +129,11 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
             protected void onBindViewHolder( PortfolioFragment.StockViewHolder holder, int position, StockModel model) {
                 holder.stockName.setText(model.getStockName());
                 holder.stockPriceInRupees.setText(model.getStockPriceInRupees()+"");
-                firebaseFirestore.collection("stocks").document(model.getStockName()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                firebaseFirestore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if(documentSnapshot.exists()){
-                           User user=documentSnapshot.toObject(User.class);
-                           // int number=documentSnapshot.getString("noOfStocksOwned")
+                            User user=documentSnapshot.toObject(User.class);
                             holder.stockOwned.setText(user.noOfStocksOwned.get(position)+"");
                         }
                     }
@@ -145,9 +144,8 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
 
         // recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
-
-        adapter.startListening();
     }
+
     void RecyclerViewCurrency(View view){
         firebaseFirestore=FirebaseFirestore.getInstance();
         recyclerView=(RecyclerView)view.findViewById(R.id.RV_wallet);
@@ -163,7 +161,16 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
             protected void onBindViewHolder( PortfolioFragment.CryptoViewHolder holder, int position,CryptoModel model) {
                 holder.cryptoName.setText(model.getcryptoName());
                 holder.cryptoPriceInRupees.setText(model.getcryptoPriceInRupees()+"");
-                holder.cryptoNetWorth.setText("Rs"+model.getcryptoPriceInRupees()*model.getcryptoPriceInRupees()+"");
+                firebaseFirestore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists()){
+                            User user=documentSnapshot.toObject(User.class);
+                            holder.cryptoOwned.setText(user.currencyOwned.get(position)+"");
+                            holder.cryptoNetWorth.setText("Rs"+user.currencyOwned.get(position)*model.getcryptoPriceInRupees()+"");
+                        }
+                    }
+                });
             }
 
             @Override
@@ -176,7 +183,19 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
 
         // recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter_crypto);
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
         adapter_crypto.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
+        adapter_crypto.stopListening();
     }
 }
