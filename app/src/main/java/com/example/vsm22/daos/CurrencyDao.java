@@ -8,6 +8,6 @@ public class CurrencyDao {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference currencyCollection = db.collection("currency");
     public void addCurrency(Currency currency){
-        currencyCollection.document(currency.currencyName).set(currency);
+        currencyCollection.document(currency.getcryptoName()).set(currency);
     }
 }

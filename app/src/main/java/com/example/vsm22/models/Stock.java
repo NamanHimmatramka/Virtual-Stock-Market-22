@@ -1,15 +1,31 @@
 package com.example.vsm22.models;
 
 public class Stock {
-
-    public String stockName;
+    String stockName;
     double stockPriceInRupees;
-    String stockImageUrl;
-    public Stock(){
+    //double stockOwned;
 
+    public Stock() {
     }
-    public Stock(String stockName, double stockPriceInRupees){
+
+    public Stock(String stockName, double stockPriceInRupees) {
         this.stockName = stockName;
+        this.stockPriceInRupees = stockPriceInRupees;
+    }
+
+    public String getStockName() {
+        return stockName;
+    }
+
+    public void setStockName(String stockName) {
+        this.stockName = stockName;
+    }
+
+    public double getStockPriceInRupees() {
+        return stockPriceInRupees;
+    }
+
+    public void setStockPriceInRupees(double stockPriceInRupees) {
         this.stockPriceInRupees = stockPriceInRupees;
     }
 }

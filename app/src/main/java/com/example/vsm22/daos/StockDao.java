@@ -26,7 +26,7 @@ public class StockDao {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference stockCollection = db.collection("stocks");
     public void addStock(Stock stock){
-        stockCollection.document(stock.stockName).set(stock);
+        stockCollection.document(stock.getStockName()).set(stock);
     }
 
     public Task<DocumentSnapshot> getStockByName(String stockName){

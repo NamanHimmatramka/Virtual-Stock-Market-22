@@ -10,6 +10,11 @@
         android:icon="@drawable/ic_baseline_lock_24"
         />
 
+    <item android:id="@+id/tradingCenter"
+        android:title="Trading Center"
+        android:icon="@drawable/ic_baseline_lock_24"
+        />
+
     <item android:id="@+id/powercards"
         android:title="Powercards"
         android:icon="@drawable/ic_baseline_lock_24"

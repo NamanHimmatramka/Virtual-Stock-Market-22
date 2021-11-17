@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.news: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new NewsFragment()).commit();
                     return true;
 
+                    case R.id.tradingCenter: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new TradingFragment()).commit();
+                    return true;
+
                     case R.id.powercards: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new PowercardsFragment()).commit();
                     return true;
 
