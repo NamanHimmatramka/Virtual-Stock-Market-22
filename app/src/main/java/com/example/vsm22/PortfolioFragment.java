@@ -128,10 +128,11 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
                         if(documentSnapshot.exists()){
                             User user=documentSnapshot.toObject(User.class);
                             holder.stockOwned.setText(user.noOfStocksOwned.get(position)+"");
+                            holder.stockNetWorth.setText("Rs"+user.noOfStocksOwned.get(position)*model.getStockPriceInRupees()+"");
                         }
                     }
                 });
-                holder.stockNetWorth.setText("Rs"+model.getStockPriceInRupees()*model.getStockPriceInRupees()+"");
+               // holder.stockNetWorth.setText("Rs"+model.getStockPriceInRupees()*model.getStockPriceInRupees()+"");
             }
         };
 
