@@ -42,34 +42,6 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_portfolio, container, false);
-//        firebaseFirestore=FirebaseFirestore.getInstance();
-//        recyclerView=(RecyclerView)view.findViewById(R.id.RV_stocks_owned);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        Query query=firebaseFirestore.collection("stocks");
-//        FirestoreRecyclerOptions<StockModel> options=new FirestoreRecyclerOptions.Builder<StockModel>()
-//                .setQuery(query,StockModel.class)
-//                .build();
-//
-//        adapter= new FirestoreRecyclerAdapter<StockModel, StockViewHolder>(options) {
-//
-//            @Override
-//            public StockViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
-//                View v=LayoutInflater.from(parent.getContext()).inflate(R.layout.stock_layout,parent,false);
-//                return new StockViewHolder(v);
-//            }
-//
-//            @Override
-//            protected void onBindViewHolder( PortfolioFragment.StockViewHolder holder, int position, StockModel model) {
-//              holder.stockName.setText(model.getStockName());
-//              holder.stockPriceInRupees.setText(model.getStockPriceInRupees()+"");
-//              holder.stockNetWorth.setText(model.getStockPriceInRupees()*model.getStockPriceInRupees()+"");
-//            }
-//        };
-//
-//       // recyclerView.setHasFixedSize(true);
-//        recyclerView.setAdapter(adapter);
-//
-//        adapter.startListening();
         RecyclerViewStock(view);
         RecyclerViewCurrency(view);
         return view;
@@ -132,11 +104,8 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
                         }
                     }
                 });
-               // holder.stockNetWorth.setText("Rs"+model.getStockPriceInRupees()*model.getStockPriceInRupees()+"");
             }
         };
-
-        // recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
     }
 

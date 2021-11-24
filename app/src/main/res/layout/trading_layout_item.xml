@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Price:1 "
+        android:text="Price1: "
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.04"
@@ -38,31 +38,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Price:2 "
+        android:text="Price2: "
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/TV_stock_in_rupees_crypto2"
+        android:id="@+id/TV_stock_price_crypto2_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
-        android:text="100"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/Stock_name"
         app:layout_constraintStart_toEndOf="@+id/tv_stock_price_crypto2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/TV_stock_in_rupees_crypto1"
+        android:id="@+id/TV_stock_price_crypto1_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="100"
         android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/tv_stock_price_crypto"
         app:layout_constraintTop_toTopOf="parent" />
@@ -72,20 +69,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Price:3 "
+        android:text="Price3: "
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_stock_price_crypto2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/TV_stock_in_rupees_crypto3"
+        android:id="@+id/TV_stock_price_crypto3_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:text="100"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_stock_price_crypto3"
