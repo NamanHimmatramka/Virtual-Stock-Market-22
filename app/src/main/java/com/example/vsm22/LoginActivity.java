@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = auth.getCurrentUser();
-        updateUI(currentUser);
+        updateUI(currentUser,1);
     }
 
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
@@ -114,13 +114,13 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = auth.getCurrentUser();
-                            updateUI(user);
+                            updateUI(user,0);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            updateUI(null);
+                            updateUI(null,0);
                             signInButton.setCardBackgroundColor(Color.parseColor("#CC55AA"));
                         }
                     }
@@ -128,11 +128,13 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void updateUI(FirebaseUser user) {
+    private void updateUI(FirebaseUser user, int info) {
         if(user != null){
-            User newUser = new User(user.getDisplayName(), user.getUid());
-            UserDao userDao = new UserDao();
-            userDao.addUser(newUser);
+            if(info == 0) {
+                User newUser = new User(user.getDisplayName(), user.getUid());
+                UserDao userDao = new UserDao();
+                userDao.addUser(newUser);
+            }
 
             Intent selectorActivityIntent = new Intent(this, SelectorActivity.class);
             startActivity(selectorActivityIntent);
