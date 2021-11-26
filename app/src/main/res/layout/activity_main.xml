@@ -12,7 +12,6 @@
         android:id="@+id/FL_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="@+id/divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -36,10 +35,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -61,146 +57,146 @@
                     android:layout_gravity="bottom"
                     android:backgroundTint="#f6f6f6"
                     app:fabCradleMargin="8dp">
-                    
+
                     <com.google.android.material.bottomnavigation.BottomNavigationView
                         android:id="@+id/bottom_nav_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:menu="@menu/bottom_nav_menu"/>
+                        app:menu="@menu/bottom_nav_menu" />
 
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_marginLeft="0dp"-->
-<!--                        android:layout_marginRight="10dp"-->
-<!--                        android:orientation="horizontal">-->
+                    <!--                    <LinearLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="match_parent"-->
+                    <!--                        android:layout_marginLeft="0dp"-->
+                    <!--                        android:layout_marginRight="10dp"-->
+                    <!--                        android:orientation="horizontal">-->
 
-<!--                        <LinearLayout-->
-<!--                            android:id="@+id/LL_news_home"-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:layout_weight="0.25"-->
-<!--                            android:orientation="vertical">-->
+                    <!--                        <LinearLayout-->
+                    <!--                            android:id="@+id/LL_news_home"-->
+                    <!--                            android:layout_width="0dp"-->
+                    <!--                            android:layout_height="match_parent"-->
+                    <!--                            android:layout_weight="0.25"-->
+                    <!--                            android:orientation="vertical">-->
 
-<!--                            <ImageView-->
-<!--                                android:id="@+id/IV_news_home"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:src="@drawable/ic_baseline_lock_24" />-->
+                    <!--                            <ImageView-->
+                    <!--                                android:id="@+id/IV_news_home"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:src="@drawable/ic_baseline_lock_24" />-->
 
-<!--                            <TextView-->
-<!--                                android:id="@+id/TV_news_home"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:gravity="center_horizontal"-->
-<!--                                android:text="News"-->
-<!--                                android:textAlignment="center"-->
-<!--                                android:textColor="#676767"-->
-<!--                                android:textSize="12sp"-->
-<!--                                android:textStyle="bold" />-->
-<!--                        </LinearLayout>-->
+                    <!--                            <TextView-->
+                    <!--                                android:id="@+id/TV_news_home"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:gravity="center_horizontal"-->
+                    <!--                                android:text="News"-->
+                    <!--                                android:textAlignment="center"-->
+                    <!--                                android:textColor="#676767"-->
+                    <!--                                android:textSize="12sp"-->
+                    <!--                                android:textStyle="bold" />-->
+                    <!--                        </LinearLayout>-->
 
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:layout_weight="0.25"-->
-<!--                            android:orientation="vertical">-->
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="0dp"-->
+                    <!--                            android:layout_height="match_parent"-->
+                    <!--                            android:layout_weight="0.25"-->
+                    <!--                            android:orientation="vertical">-->
 
-<!--                            <ImageView-->
-<!--                                android:id="@+id/iv_profile"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:src="@drawable/ic_baseline_lock_24" />-->
+                    <!--                            <ImageView-->
+                    <!--                                android:id="@+id/iv_profile"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:src="@drawable/ic_baseline_lock_24" />-->
 
-<!--                            <TextView-->
-<!--                                android:id="@+id/tv_profile"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:gravity="center_horizontal"-->
-<!--                                android:text="Profile"-->
-<!--                                android:textAlignment="center"-->
-<!--                                android:textColor="#676767"-->
-<!--                                android:textSize="12sp"-->
-<!--                                android:textStyle="bold" />-->
-<!--                        </LinearLayout>-->
+                    <!--                            <TextView-->
+                    <!--                                android:id="@+id/tv_profile"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:gravity="center_horizontal"-->
+                    <!--                                android:text="Profile"-->
+                    <!--                                android:textAlignment="center"-->
+                    <!--                                android:textColor="#676767"-->
+                    <!--                                android:textSize="12sp"-->
+                    <!--                                android:textStyle="bold" />-->
+                    <!--                        </LinearLayout>-->
 
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:layout_weight="0.2"-->
-<!--                            android:orientation="vertical"-->
-<!--                            android:visibility="invisible">-->
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="0dp"-->
+                    <!--                            android:layout_height="match_parent"-->
+                    <!--                            android:layout_weight="0.2"-->
+                    <!--                            android:orientation="vertical"-->
+                    <!--                            android:visibility="invisible">-->
 
-<!--                            <ImageView-->
-<!--                                android:id="@+id/tv_invisible"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:src="@drawable/ic_baseline_lock_24" />-->
+                    <!--                            <ImageView-->
+                    <!--                                android:id="@+id/tv_invisible"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:src="@drawable/ic_baseline_lock_24" />-->
 
-<!--                            <TextView-->
-<!--                                android:id="@+id/iv_invisible"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:gravity="center_horizontal"-->
-<!--                                android:text="Home"-->
-<!--                                android:textAlignment="center"-->
-<!--                                android:textColor="#676767"-->
-<!--                                android:textSize="12sp"-->
-<!--                                android:textStyle="bold"-->
-<!--                                android:visibility="invisible" />-->
-<!--                        </LinearLayout>-->
+                    <!--                            <TextView-->
+                    <!--                                android:id="@+id/iv_invisible"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:gravity="center_horizontal"-->
+                    <!--                                android:text="Home"-->
+                    <!--                                android:textAlignment="center"-->
+                    <!--                                android:textColor="#676767"-->
+                    <!--                                android:textSize="12sp"-->
+                    <!--                                android:textStyle="bold"-->
+                    <!--                                android:visibility="invisible" />-->
+                    <!--                        </LinearLayout>-->
 
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:layout_weight="0.10"-->
-<!--                            android:orientation="vertical">-->
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="wrap_content"-->
+                    <!--                            android:layout_height="match_parent"-->
+                    <!--                            android:layout_weight="0.10"-->
+                    <!--                            android:orientation="vertical">-->
 
-<!--                            <ImageView-->
-<!--                                android:id="@+id/iv_trading"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:src="@drawable/ic_baseline_lock_24" />-->
+                    <!--                            <ImageView-->
+                    <!--                                android:id="@+id/iv_trading"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:layout_weight="1"-->
+                    <!--                                android:src="@drawable/ic_baseline_lock_24" />-->
 
-<!--                            <TextView-->
-<!--                                android:id="@+id/tv_trading"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_weight="0.5"-->
-<!--                                android:gravity="center_horizontal"-->
-<!--                                android:text="LeaderBoard"-->
-<!--                                android:textAlignment="center"-->
-<!--                                android:textColor="#676767"-->
-<!--                                android:textSize="10sp"-->
-<!--                                android:textStyle="bold" />-->
-<!--                        </LinearLayout>-->
+                    <!--                            <TextView-->
+                    <!--                                android:id="@+id/tv_trading"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:layout_weight="0.5"-->
+                    <!--                                android:gravity="center_horizontal"-->
+                    <!--                                android:text="LeaderBoard"-->
+                    <!--                                android:textAlignment="center"-->
+                    <!--                                android:textColor="#676767"-->
+                    <!--                                android:textSize="10sp"-->
+                    <!--                                android:textStyle="bold" />-->
+                    <!--                        </LinearLayout>-->
 
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:layout_weight="0.10"-->
-<!--                            android:orientation="vertical">-->
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="wrap_content"-->
+                    <!--                            android:layout_height="match_parent"-->
+                    <!--                            android:layout_weight="0.10"-->
+                    <!--                            android:orientation="vertical">-->
 
-<!--                            <ImageView-->
-<!--                                android:id="@+id/IV_contactInfo"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:src="@drawable/ic_baseline_lock_24" />-->
+                    <!--                            <ImageView-->
+                    <!--                                android:id="@+id/IV_contactInfo"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:layout_weight="1"-->
+                    <!--                                android:src="@drawable/ic_baseline_lock_24" />-->
 
-<!--                            <TextView-->
-<!--                                android:id="@+id/TV_contactInfo"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:gravity="center_horizontal"-->
-<!--                                android:text="Power Card"-->
-<!--                                android:textAlignment="center"-->
-<!--                                android:textColor="#676767"-->
-<!--                                android:textSize="10sp"-->
-<!--                                android:textStyle="bold" />-->
-<!--                        </LinearLayout>-->
-<!--                    </LinearLayout>-->
+                    <!--                            <TextView-->
+                    <!--                                android:id="@+id/TV_contactInfo"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:gravity="center_horizontal"-->
+                    <!--                                android:text="Power Card"-->
+                    <!--                                android:textAlignment="center"-->
+                    <!--                                android:textColor="#676767"-->
+                    <!--                                android:textSize="10sp"-->
+                    <!--                                android:textStyle="bold" />-->
+                    <!--                        </LinearLayout>-->
+                    <!--                    </LinearLayout>-->
 
                 </com.google.android.material.bottomappbar.BottomAppBar>
 
