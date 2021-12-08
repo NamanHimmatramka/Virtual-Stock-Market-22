@@ -27,8 +27,9 @@ public class NewsFragment extends Fragment {
     RecyclerView recyclerView;
     List<News> newslist;
     NewsAdapterRV adapter;
-    public NewsFragment() {
-        // Required empty public constructor
+    int roundNo;
+    public NewsFragment(int roundNo) {
+        this.roundNo = roundNo;
     }
 
     @Override
