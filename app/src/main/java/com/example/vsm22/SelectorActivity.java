@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -19,7 +22,7 @@ public class SelectorActivity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CardView sponsors;
-    CardView mainGame;
+    CardView mainGame,trialGame;
     ProgressBar loader;
 
     @Override
@@ -28,8 +31,12 @@ public class SelectorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_selector);
 
         mainGame = findViewById(R.id.CV_mainGame);
+        trialGame = findViewById(R.id.CV_trialRound);
+
         sponsors = findViewById(R.id.CV_sponsors);
         loader = findViewById(R.id.loader);
+
+
 
 //        db.collection("registeredUsers").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
 //            @Override
@@ -63,7 +70,9 @@ public class SelectorActivity extends AppCompatActivity {
         mainGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 loader.setVisibility(View.VISIBLE);
+                loader.bringToFront();
                 db.collection("registeredUsers").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -88,6 +97,7 @@ public class SelectorActivity extends AppCompatActivity {
                         }
                     }
                 });
+
             }
         });
 //        mainGame.setOnClickListener(new View.OnClickListener() {
@@ -102,8 +112,20 @@ public class SelectorActivity extends AppCompatActivity {
         sponsors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loader.setVisibility(View.VISIBLE);
+                loader.bringToFront();
                 Intent intent = new Intent(SelectorActivity.this, SponsorsActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        trialGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loader.setVisibility(View.VISIBLE);
+                loader.bringToFront();
+
+                // loader.setVisibility(View.GONE);
             }
         });
     }

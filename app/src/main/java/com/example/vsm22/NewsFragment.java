@@ -49,11 +49,39 @@ public class NewsFragment extends Fragment {
     private void initializedata() {
 
         newslist=new ArrayList<>();
-        newslist.add(new News("News 1",1));
-        newslist.add(new News("News 2",1));
-        newslist.add(new News("News 3",1));
-        newslist.add(new News("News 4",1));
-        newslist.add(new News("News 5",1));
+        if(roundNo==1){
+            newslist.clear();
+            newslist.add(new News("News 1",1));
+        }
+        else if(roundNo==2){
+            newslist.clear();
+            newslist.add(new News("News 1",1));
+            newslist.add(new News("News 2",2));
+        }
+        else if(roundNo==3){
+            newslist.clear();
+
+            newslist.add(new News("News 3",3));
+            newslist.add(new News("News 2",2));
+            newslist.add(new News("News 1",1));
+
+        }
+        else if(roundNo==4){
+            newslist.clear();
+
+        }
+        else if(roundNo==5){
+            newslist.clear();
+            newslist.add(new News("News 5",5));
+            newslist.add(new News("News 4",4));
+            newslist.add(new News("News 3",3));
+            newslist.add(new News("News 2",2));
+            newslist.add(new News("News 1",1));
+
+        }
+
+
+
 
     }
 
