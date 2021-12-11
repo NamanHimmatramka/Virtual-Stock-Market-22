@@ -1,6 +1,8 @@
 package com.example.vsm22;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -88,13 +91,30 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                        int temp2 = user.noOfStocksOwned.get(position);
                                        user.noOfStocksOwned.set(position, temp2 + Integer.parseInt(holder.buyQuantity.getText().toString()));
                                    }
+
+                                   holder.buyButton.setOnClickListener(new View.OnClickListener() {
+                                       @Override
+                                       public void onClick(View v) {
+                                           AlertDialog alertDialog = new AlertDialog.Builder(context)
+                                                   .setTitle("Confirmation")
+                                                   .setMessage("Are you sure you want to buy these stocks")
+                                                   .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                                       @Override
+                                                       public void onClick(DialogInterface dialog, int which) {
+                                                           db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
+                                                           Toast.makeText(context, "Transaction Successful", Toast.LENGTH_LONG).show();
+                                                       }
+                                                   })
+                                                   .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                                       @Override
+                                                       public void onClick(DialogInterface dialog, int which) {
+                                                           Toast.makeText(context, "Transaction Cancelled", Toast.LENGTH_LONG).show();
+                                                       }
+                                                   })
+                                                   .show();
+                                       }
+                                   });
                                }
-                               holder.buyButton.setOnClickListener(new View.OnClickListener() {
-                                   @Override
-                                   public void onClick(View v) {
-                                       db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
-                                   }
-                               });
                            }
                        });
                     }
@@ -145,13 +165,30 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                         int temp2 = user.noOfStocksOwned.get(position);
                                         user.noOfStocksOwned.set(position, temp2 - Integer.parseInt(holder.sellQuantity.getText().toString()));
                                     }
+
+                                    holder.sellButton.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            AlertDialog alertDialog = new AlertDialog.Builder(context)
+                                                    .setTitle("Confirmation")
+                                                    .setMessage("Are you sure you want to sell these stocks")
+                                                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                            db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
+                                                            Toast.makeText(context, "Transaction Successful", Toast.LENGTH_LONG).show();
+                                                        }
+                                                    })
+                                                    .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                            Toast.makeText(context, "Transaction Cancelled", Toast.LENGTH_LONG).show();
+                                                        }
+                                                    })
+                                                    .show();
+                                        }
+                                    });
                                 }
-                                holder.sellButton.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
-                                    }
-                                });
                             }
                         });
                     }
