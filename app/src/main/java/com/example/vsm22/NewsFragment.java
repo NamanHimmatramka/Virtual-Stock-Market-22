@@ -68,6 +68,10 @@ public class NewsFragment extends Fragment {
         }
         else if(roundNo==4){
             newslist.clear();
+            newslist.add(new News("News 4",4));
+            newslist.add(new News("News 3",3));
+            newslist.add(new News("News 2",2));
+            newslist.add(new News("News 1",1));
 
         }
         else if(roundNo==5){
