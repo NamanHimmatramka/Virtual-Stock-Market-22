@@ -1,9 +1,11 @@
 package com.example.vsm22.models;
 
+import android.media.Image;
+
 public class News {
     private String Headline;
     private int RoundNo;
-
+    private String newsImage;
     public News() {
 
     }
@@ -12,6 +14,15 @@ public class News {
         Headline = headline;
         RoundNo = roundNo;
     }
+
+    public String getNewsImage() {
+        return newsImage;
+    }
+
+    public void setNewsImage(String newsImage) {
+        this.newsImage = newsImage;
+    }
+
 
     public String getHeadline() {
         return Headline;

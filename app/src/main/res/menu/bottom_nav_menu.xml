@@ -20,8 +20,4 @@
         android:icon="@drawable/ic_baseline_lock_24"
         />
 
-    <item android:id="@+id/leaderboard"
-        android:title="Leaderboard"
-        android:icon="@drawable/ic_baseline_lock_24"
-        />
 </menu>

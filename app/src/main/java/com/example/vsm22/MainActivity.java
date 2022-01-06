@@ -38,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.powercards: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new PowercardsFragment()).commit();
                     return true;
 
-                    case R.id.leaderboard: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new LeaderboardFragment()).commit();
-                    return true;
                 }
                 return false;
             }

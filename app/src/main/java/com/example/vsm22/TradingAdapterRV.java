@@ -187,7 +187,7 @@ class StockViewHolder extends RecyclerView.ViewHolder {
     EditText sellQuantity;
     public StockViewHolder(View itemView) {
         super(itemView);
-        stockName=itemView.findViewById(R.id.Stock_name);
+        stockName=itemView.findViewById(R.id.TV_stock_name);
         buyButton=itemView.findViewById(R.id.BT_Buy);
         sellButton=itemView.findViewById(R.id.BT_sell);
         priceCrypto1=itemView.findViewById(R.id.TV_stock_price_crypto1_value);

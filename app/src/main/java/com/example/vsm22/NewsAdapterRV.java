@@ -3,16 +3,11 @@ package com.example.vsm22;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.HeaderViewListAdapter;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vsm22.models.News;
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
@@ -46,7 +41,7 @@ private List<News> newsList;
         private TextView Headline,RoundNo ;
         public NewsViewHolder(View itemView) {
             super(itemView);
-            Headline=itemView.findViewById(R.id.TV_news_heading);
+            Headline=itemView.findViewById(R.id.TV_stock_name);
             RoundNo=itemView.findViewById(R.id.TV_round_no);
 
         }

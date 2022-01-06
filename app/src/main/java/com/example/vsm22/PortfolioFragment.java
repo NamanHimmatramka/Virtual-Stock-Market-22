@@ -1,9 +1,11 @@
 package com.example.vsm22;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -58,19 +60,21 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
             super(itemView);
             stockName=itemView.findViewById(R.id.TV_stockName);
             stockPriceInRupees=itemView.findViewById(R.id.TV_stock_worth_number);
-            stockNetWorth=itemView.findViewById(R.id.TV_stock_worth_number2);
+            stockNetWorth=itemView.findViewById(R.id.TV_net_Stock_worth);
             stockOwned=itemView.findViewById(R.id.TV_stock_number);
         }
     }
 
     private class CryptoViewHolder extends RecyclerView.ViewHolder {
         private TextView cryptoName,cryptoPriceInRupees,cryptoNetWorth, cryptoOwned;
+        private ConstraintLayout constraintLayout;
         public CryptoViewHolder(View itemView) {
             super(itemView);
             cryptoName=itemView.findViewById(R.id.TV_crypto_name);
             cryptoPriceInRupees=itemView.findViewById(R.id.TV_crypto_worth_number);
             cryptoNetWorth=itemView.findViewById(R.id.TV_crypto_worth_number2);
             cryptoOwned = itemView.findViewById(R.id.TV_crypto_number);
+            constraintLayout=itemView.findViewById(R.id.CV_cryptoItem);
         }}
 
     void RecyclerViewStock(View view){
@@ -100,12 +104,15 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
                         if(documentSnapshot.exists()){
                             User user=documentSnapshot.toObject(User.class);
                             holder.stockOwned.setText(user.noOfStocksOwned.get(position)+"");
-                            holder.stockNetWorth.setText("Rs"+user.noOfStocksOwned.get(position)*model.getStockPriceInRupees()+"");
+                            holder.stockNetWorth.setText(user.noOfStocksOwned.get(position)*model.getStockPriceInRupees()+"");
                         }
                     }
                 });
+
+
             }
         };
+
         recyclerView.setAdapter(adapter);
     }
 
@@ -130,10 +137,14 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
                         if(documentSnapshot.exists()){
                             User user=documentSnapshot.toObject(User.class);
                             holder.cryptoOwned.setText(user.currencyOwned.get(position)+"");
-                            holder.cryptoNetWorth.setText("Rs"+user.currencyOwned.get(position)*model.getcryptoPriceInRupees()+"");
+                            holder.cryptoNetWorth.setText(user.currencyOwned.get(position)*model.getcryptoPriceInRupees()+"");
                         }
                     }
                 });
+                AnimationDrawable animationDrawable=(AnimationDrawable) holder.constraintLayout.getBackground();
+                animationDrawable.setEnterFadeDuration(2000);
+                animationDrawable.setExitFadeDuration(4000);
+                animationDrawable.start();
             }
 
             @Override

@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:layout_margin="5dp"
-    android:background="#3F51B5">
+    android:background="@drawable/trading_stock">
 
 
     <TextView
-        android:id="@+id/Stock_name"
+        android:id="@+id/TV_stock_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stock Name"
+        android:fontFamily="@font/questrial"
+        android:text="Stock Price"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -23,124 +24,154 @@
 
     <TextView
         android:id="@+id/tv_stock_price_crypto"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Price1: "
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:fontFamily="@font/questrial"
+        android:text="Price:1 "
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_round_news"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/tv_round_news"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/tv_stock_price_crypto2"
+        android:id="@+id/tv_round_news"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Price2: "
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/questrial"
+        android:text="Price:2 "
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/tv_stock_price_crypto3"
+        app:layout_constraintHorizontal_bias="0.386"
+        app:layout_constraintStart_toEndOf="@+id/TV_stock_price_crypto1_value"
+        app:layout_constraintTop_toBottomOf="@+id/TV_stock_name" />
 
     <TextView
         android:id="@+id/TV_stock_price_crypto2_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:fontFamily="@font/questrial"
+        android:text="100"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/Stock_name"
-        app:layout_constraintStart_toEndOf="@+id/tv_stock_price_crypto2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_round_news"
+        app:layout_constraintStart_toEndOf="@+id/tv_round_news"
+        app:layout_constraintTop_toTopOf="@+id/tv_round_news"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/TV_stock_price_crypto1_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:fontFamily="@font/questrial"
+        android:text="100"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_stock_price_crypto"
         app:layout_constraintStart_toEndOf="@+id/tv_stock_price_crypto"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/tv_stock_price_crypto"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_stock_price_crypto3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Price3: "
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:fontFamily="@font/questrial"
+        android:text="Price:3 "
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_stock_price_crypto2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_round_news"
+        app:layout_constraintEnd_toStartOf="@+id/TV_stock_price_crypto3_value"
+        app:layout_constraintTop_toTopOf="@+id/tv_round_news" />
 
     <TextView
         android:id="@+id/TV_stock_price_crypto3_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:fontFamily="@font/questrial"
+        android:text="100"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_stock_price_crypto3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_stock_price_crypto3"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/tv_stock_price_crypto3"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/BT_Buy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:background="@drawable/buy_button"
+        android:fontFamily="@font/questrial"
         android:text="Buy"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/BT_sell"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_stock_price_crypto"
         app:layout_constraintVertical_bias="0.52" />
 
+
     <EditText
         android:id="@+id/ET_Buy"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="Number"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/input_field"
+        android:fontFamily="@font/questrial"
+        android:hint="Quantity"
+        android:textColorHint="#777676"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="@+id/BT_Buy"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.226"
         app:layout_constraintStart_toEndOf="@+id/BT_Buy"
         app:layout_constraintTop_toTopOf="@+id/BT_Buy"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintVertical_bias="0.476" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/BT_sell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="16dp"
-        android:text="sell"
+        android:background="@drawable/sell_button"
+        android:fontFamily="@font/questrial"
+        android:text="Sell"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BT_Buy" />
 
     <EditText
         android:id="@+id/ET_Sell"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/input_field"
         android:ems="10"
-        android:inputType="number"
-        android:hint="Number"
+        android:fontFamily="@font/questrial"
+        android:hint="Quantity"
+        android:inputType="textPersonName"
+        android:textColorHint="#777676"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/BT_sell"
-        app:layout_constraintEnd_toEndOf="@+id/ET_Buy"
-        app:layout_constraintStart_toStartOf="@+id/ET_Buy"
+        app:layout_constraintStart_toEndOf="@+id/BT_sell"
         app:layout_constraintTop_toTopOf="@+id/BT_sell"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.428" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -152,13 +183,14 @@
         app:layout_constraintTop_toTopOf="@+id/ET_Sell">
 
         <Spinner
-            android:id="@+id/Spin_sell"
+            android:id="@+id/Spin_buy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/CryptoCurrency" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -168,10 +200,10 @@
         app:layout_constraintTop_toTopOf="@+id/ET_Buy">
 
         <Spinner
-            android:id="@+id/Spin_buy"
+            android:id="@+id/Spin_sell"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/CryptoCurrency"/>
+            android:entries="@array/CryptoCurrency" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

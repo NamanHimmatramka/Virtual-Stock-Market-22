@@ -65,9 +65,7 @@
                     android:id="@+id/app_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:backgroundTint="#f6f6f6"
-                    app:fabCradleMargin="8dp">
+                    android:layout_gravity="bottom">
 
                     <com.google.android.material.bottomnavigation.BottomNavigationView
                         android:id="@+id/bottom_nav_view"
@@ -210,8 +208,6 @@
                     <!--                    </LinearLayout>-->
 
                 </com.google.android.material.bottomappbar.BottomAppBar>
-
-
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
