@@ -41,7 +41,7 @@ private List<News> newsList;
         private TextView Headline,RoundNo ;
         public NewsViewHolder(View itemView) {
             super(itemView);
-            Headline=itemView.findViewById(R.id.TV_stock_name);
+            Headline=itemView.findViewById(R.id.TV_news_headline);
             RoundNo=itemView.findViewById(R.id.TV_round_no);
 
         }

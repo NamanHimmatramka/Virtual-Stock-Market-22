@@ -12,33 +12,22 @@
         android:id="@+id/FL_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView"
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="353dp"
             android:layout_marginRight="353dp"
             android:text="Time"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent" />
     </FrameLayout>
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="0.3" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -55,17 +44,18 @@
             <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:id="@+id/coordinatorLayout2"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="50dp"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent">
 
-                <com.google.android.material.bottomappbar.BottomAppBar
-                    android:id="@+id/app_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom">
+<!--                <com.google.android.material.bottomappbar.BottomAppBar-->
+<!--                    android:id="@+id/app_bar"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="bottom">-->
 
                     <com.google.android.material.bottomnavigation.BottomNavigationView
                         android:id="@+id/bottom_nav_view"
@@ -207,7 +197,7 @@
                     <!--                        </LinearLayout>-->
                     <!--                    </LinearLayout>-->
 
-                </com.google.android.material.bottomappbar.BottomAppBar>
+<!--                </com.google.android.material.bottomappbar.BottomAppBar>-->
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

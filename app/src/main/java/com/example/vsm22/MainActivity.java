@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bottomAppBar = findViewById(R.id.app_bar);
+//        bottomAppBar = findViewById(R.id.app_bar);
         bottomNavigationView = findViewById(R.id.bottom_nav_view);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new PortfolioFragment()).commit();
