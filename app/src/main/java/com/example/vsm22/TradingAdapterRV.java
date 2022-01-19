@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -28,7 +27,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewHolder> {
@@ -224,7 +222,7 @@ class StockViewHolder extends RecyclerView.ViewHolder {
     EditText sellQuantity;
     public StockViewHolder(View itemView) {
         super(itemView);
-        stockName=itemView.findViewById(R.id.Stock_name);
+        stockName=itemView.findViewById(R.id.TV_stock_name);
         buyButton=itemView.findViewById(R.id.BT_Buy);
         sellButton=itemView.findViewById(R.id.BT_sell);
         priceCrypto1=itemView.findViewById(R.id.TV_stock_price_crypto1_value);
