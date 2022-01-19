@@ -71,24 +71,31 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                            public void onSuccess(DocumentSnapshot documentSnapshot) {
                                User user = documentSnapshot.toObject(User.class);
                                if(!holder.buyQuantity.getText().toString().equals("")) {
+                                   int temp2 = user.noOfStocksOwned.get(position);
+                                   boolean successful = false;
                                    if (buyCurrency == currency1) {
                                        double temp = user.currencyOwned.get(0) - (buyPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())));
-                                       user.currencyOwned.set(0, temp);
-                                       int temp2 = user.noOfStocksOwned.get(position);
-                                       user.noOfStocksOwned.set(position, temp2 + Integer.parseInt(holder.buyQuantity.getText().toString()));
+                                       if(temp>0) {
+                                           user.currencyOwned.set(0, temp);
+                                           successful = true;
+                                       }
                                    }
                                    if (buyCurrency == currency2) {
                                        double temp = user.currencyOwned.get(1) - (buyPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())));
-                                       user.currencyOwned.set(1, temp);
-                                       int temp2 = user.noOfStocksOwned.get(position);
-                                       user.noOfStocksOwned.set(position, temp2 + Integer.parseInt(holder.buyQuantity.getText().toString()));
+                                       if(temp > 0) {
+                                           user.currencyOwned.set(1, temp);
+                                           successful = true;
+                                       }
                                    }
                                    if (buyCurrency == currency3) {
                                        double temp = user.currencyOwned.get(2) - (buyPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())));
-                                       user.currencyOwned.set(2, temp);
-                                       int temp2 = user.noOfStocksOwned.get(position);
-                                       user.noOfStocksOwned.set(position, temp2 + Integer.parseInt(holder.buyQuantity.getText().toString()));
+                                       if(temp>0){
+                                           user.currencyOwned.set(2, temp);
+                                           successful = true;
+                                       }
                                    }
+                                   if(successful == true){
+                                   user.noOfStocksOwned.set(position, temp2 + Integer.parseInt(holder.buyQuantity.getText().toString()));
 
                                    holder.buyButton.setOnClickListener(new View.OnClickListener() {
                                        @Override
@@ -111,7 +118,9 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                                    })
                                                    .show();
                                        }
-                                   });
+                                   });}
+                                   else
+                                       Toast.makeText(context, "You don't have enough "+buyCurrency.getcryptoName()+"s" , Toast.LENGTH_LONG).show();
                                }
                            }
                        });
@@ -145,24 +154,26 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
                                 User user = documentSnapshot.toObject(User.class);
                                 if(!holder.sellQuantity.getText().toString().equals("")) {
+                                    int temp2 = user.noOfStocksOwned.get(position);
+                                    boolean successful = temp2>Integer.parseInt(holder.sellQuantity.getText().toString());
                                     if (sellCurrency == currency1) {
                                         double temp = user.currencyOwned.get(0) + (sellPrice * (Integer.parseInt(holder.sellQuantity.getText().toString())));
-                                        user.currencyOwned.set(0, temp);
-                                        int temp2 = user.noOfStocksOwned.get(position);
-                                        user.noOfStocksOwned.set(position, temp2 - Integer.parseInt(holder.sellQuantity.getText().toString()));
+                                        if(successful)
+                                            user.currencyOwned.set(0, temp);
                                     }
                                     if (sellCurrency == currency2) {
                                         double temp = user.currencyOwned.get(1) + (sellPrice * (Integer.parseInt(holder.sellQuantity.getText().toString())));
-                                        user.currencyOwned.set(1, temp);
-                                        int temp2 = user.noOfStocksOwned.get(position);
-                                        user.noOfStocksOwned.set(position, temp2 - Integer.parseInt(holder.sellQuantity.getText().toString()));
+                                        if(successful)
+                                            user.currencyOwned.set(1, temp);
                                     }
                                     if (sellCurrency == currency3) {
                                         double temp = user.currencyOwned.get(2) + (sellPrice * (Integer.parseInt(holder.sellQuantity.getText().toString())));
-                                        user.currencyOwned.set(2, temp);
-                                        int temp2 = user.noOfStocksOwned.get(position);
-                                        user.noOfStocksOwned.set(position, temp2 - Integer.parseInt(holder.sellQuantity.getText().toString()));
+                                        if(successful)
+                                            user.currencyOwned.set(2, temp);
                                     }
+
+                                    if(successful){
+                                    user.noOfStocksOwned.set(position, temp2 - Integer.parseInt(holder.sellQuantity.getText().toString()));
 
                                     holder.sellButton.setOnClickListener(new View.OnClickListener() {
                                         @Override
@@ -185,7 +196,9 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                                     })
                                                     .show();
                                         }
-                                    });
+                                    });}
+                                    else
+                                        Toast.makeText(context, "You dont have enough "+model.getStockName()+"s", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });

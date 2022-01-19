@@ -9,8 +9,13 @@ import android.os.CountDownTimer;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.vsm22.models.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Locale;
@@ -56,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        long duration = TimeUnit.MINUTES.toMillis(1);
+        long duration = TimeUnit.MINUTES.toMillis(5);
         new CountDownTimer(duration, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -69,10 +74,30 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                Intent intent = new Intent(MainActivity.this, WaitingActivity.class);
-                startActivity(intent);
-                finish();
+               db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists()){
+                            User user = documentSnapshot.toObject(User.class);
+                            user.status = "waiting";
+                            db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
+                            Intent intent = new Intent(MainActivity.this, WaitingActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
             }
         }.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }
