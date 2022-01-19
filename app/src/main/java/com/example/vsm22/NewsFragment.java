@@ -51,37 +51,77 @@ public class NewsFragment extends Fragment {
         newslist=new ArrayList<>();
         if(roundNo==1){
             newslist.clear();
-            newslist.add(new News("News 1",1));
+
+            newslist.add(new News(getText(R.string.News_1_1).toString(),1));
+            newslist.add(new News(getText(R.string.News_1_2).toString(),1));
+            newslist.add(new News(getText(R.string.News_1_3).toString(),1));
+            newslist.add(new News(getText(R.string.News_1_4).toString(),1));
         }
         else if(roundNo==2){
             newslist.clear();
-            newslist.add(new News("News 1",1));
-            newslist.add(new News("News 2",2));
+            newslist.add(new News(getText(R.string.News_2_1).toString(),2));
+            newslist.add(new News(getText(R.string.News_2_2).toString(),2));
+            newslist.add(new News(getText(R.string.News_2_3).toString(),2));
+            newslist.add(new News(getText(R.string.News_1_1).toString(),1));
+            newslist.add(new News(getText(R.string.News_1_2).toString(),1));
+            newslist.add(new News(getText(R.string.News_1_3).toString(),1));
+            newslist.add(new News(getText(R.string.News_1_4).toString(),1));
         }
         else if(roundNo==3){
             newslist.clear();
-
-            newslist.add(new News("News 3",3));
-            newslist.add(new News("News 2",2));
-            newslist.add(new News("News 1",1));
+            newslist.add(new News(getText(R.string.News_3_1).toString(),3));
+            newslist.add(new News(getText(R.string.News_3_2).toString(),3));
+            newslist.add(new News(getText(R.string.News_3_3).toString(),3));
+            newslist.add(new News(getText(R.string.News_3_4).toString(),3));
+            newslist.add(new News(getText(R.string.News_2_1).toString(),2));
+            newslist.add(new News(getText(R.string.News_2_2).toString(),2));
+            newslist.add(new News(getText(R.string.News_2_3).toString(),2));
+            newslist.add(new News(getText(R.string.News_1_1).toString(),1));
+            newslist.add(new News(getText(R.string.News_1_2).toString(),1));
+            newslist.add(new News(getText(R.string.News_1_3).toString(),1));
+            newslist.add(new News(getText(R.string.News_1_4).toString(),1));
 
         }
         else if(roundNo==4){
             newslist.clear();
-            newslist.add(new News("News 4",4));
-            newslist.add(new News("News 3",3));
-            newslist.add(new News("News 2",2));
-            newslist.add(new News("News 1",1));
+            newslist.add(new News(getText(R.string.News_4_1).toString(),4));
+            newslist.add(new News(getText(R.string.News_4_2).toString(),4));
+            newslist.add(new News(getText(R.string.News_4_3).toString(),4));
+            newslist.add(new News(getText(R.string.News_4_4).toString(),4));
+            newslist.add(new News(getText(R.string.News_3_1).toString(),3));
+            newslist.add(new News(getText(R.string.News_3_2).toString(),3));
+            newslist.add(new News(getText(R.string.News_3_3).toString(),3));
+            newslist.add(new News(getText(R.string.News_3_4).toString(),3));
+            newslist.add(new News(getText(R.string.News_2_1).toString(),2));
+            newslist.add(new News(getText(R.string.News_2_2).toString(),2));
+            newslist.add(new News(getText(R.string.News_2_3).toString(),2));
+            newslist.add(new News(getText(R.string.News_1_1).toString(),1));
+            newslist.add(new News(getText(R.string.News_1_2).toString(),1));
+            newslist.add(new News(getText(R.string.News_1_3).toString(),1));
+            newslist.add(new News(getText(R.string.News_1_4).toString(),1));
 
         }
         else if(roundNo==5){
             newslist.clear();
-            newslist.add(new News("News 5",5));
-            newslist.add(new News("News 4",4));
-            newslist.add(new News("News 3",3));
-            newslist.add(new News("News 2",2));
-            newslist.add(new News("News 1",1));
-
+            newslist.add(new News(getText(R.string.News_5_1).toString(),5));
+            newslist.add(new News(getText(R.string.News_5_2).toString(),5));
+            newslist.add(new News(getText(R.string.News_5_3).toString(),5));
+            newslist.add(new News(getText(R.string.News_5_4).toString(),5));
+            newslist.add(new News(getText(R.string.News_4_1).toString(),4));
+            newslist.add(new News(getText(R.string.News_4_2).toString(),4));
+            newslist.add(new News(getText(R.string.News_4_3).toString(),4));
+            newslist.add(new News(getText(R.string.News_4_4).toString(),4));
+            newslist.add(new News(getText(R.string.News_3_1).toString(),3));
+            newslist.add(new News(getText(R.string.News_3_2).toString(),3));
+            newslist.add(new News(getText(R.string.News_3_3).toString(),3));
+            newslist.add(new News(getText(R.string.News_3_4).toString(),3));
+            newslist.add(new News(getText(R.string.News_2_1).toString(),2));
+            newslist.add(new News(getText(R.string.News_2_2).toString(),2));
+            newslist.add(new News(getText(R.string.News_2_3).toString(),2));
+            newslist.add(new News(getText(R.string.News_1_1).toString(),1));
+            newslist.add(new News(getText(R.string.News_1_2).toString(),1));
+            newslist.add(new News(getText(R.string.News_1_3).toString(),1));
+            newslist.add(new News(getText(R.string.News_1_4).toString(),1));
         }
 
 

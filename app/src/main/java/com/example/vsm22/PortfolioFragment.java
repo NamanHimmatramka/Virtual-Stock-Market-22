@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.vsm22.models.Currency;
@@ -68,6 +69,7 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
     private class CryptoViewHolder extends RecyclerView.ViewHolder {
         private TextView cryptoName,cryptoPriceInRupees,cryptoNetWorth, cryptoOwned;
         private ConstraintLayout constraintLayout;
+        private ImageView cyptoImage;
         public CryptoViewHolder(View itemView) {
             super(itemView);
             cryptoName=itemView.findViewById(R.id.TV_crypto_name);
@@ -75,6 +77,7 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
             cryptoNetWorth=itemView.findViewById(R.id.TV_crypto_worth_number2);
             cryptoOwned = itemView.findViewById(R.id.TV_crypto_number);
             constraintLayout=itemView.findViewById(R.id.CV_cryptoItem);
+            cyptoImage=itemView.findViewById(R.id.IV_crypto);
         }}
 
     void RecyclerViewStock(View view){
@@ -98,6 +101,7 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
             protected void onBindViewHolder( PortfolioFragment.StockViewHolder holder, int position, Stock model) {
                 holder.stockName.setText(model.getStockName());
                 holder.stockPriceInRupees.setText(model.getStockPriceInRupees()+"");
+
                 firebaseFirestore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -130,6 +134,7 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
             @Override
             protected void onBindViewHolder( PortfolioFragment.CryptoViewHolder holder, int position,Currency model) {
                 holder.cryptoName.setText(model.getcryptoName());
+
                 holder.cryptoPriceInRupees.setText(model.getcryptoPriceInRupees()+"");
                 firebaseFirestore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
@@ -141,6 +146,7 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
                         }
                     }
                 });
+
                 AnimationDrawable animationDrawable=(AnimationDrawable) holder.constraintLayout.getBackground();
                 animationDrawable.setEnterFadeDuration(2000);
                 animationDrawable.setExitFadeDuration(4000);

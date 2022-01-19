@@ -1,16 +1,39 @@
+
+
 <resources>
     <string name="app_name">VSM\'22</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="CryptoCurrency">
-        <item>@string/Crypto00</item>
+        <item>@string/None</item>
         <item>@string/Crypto01</item>
         <item>@string/Crypto02</item>
         <item>@string/Crypto03</item>
     </string-array>
-    <string name="Crypto00">Not Selected</string>
+    <string name="None">Select One</string>
     <string name="Crypto01">CryptoOne</string>
     <string name="Crypto02">CryptoTwo</string>
     <string name="Crypto03">CryptoThree</string>
+    <string name="News_1_1">NEW MEMBER IN PERIODIC FAMILY</string>
+    <string name="News_1_2">AIRLINE PRIVATIZATION</string>
+    <string name="News_1_3">DR. UTOPIA RECEIVES FUNDS</string>
+    <string name="News_1_4">CONSERVATIVE PARTYY</string>
+    <string name="News_2_1">TENDER PASSED</string>
+    <string name="News_2_2">UTOPIAN MSE</string>
+    <string name="News_2_3">CRYPTOCURRENCY</string>
+    <string name="News_3_1">RADIOACTIVITY</string>
+    <string name="News_3_2">NUTRILIZING RESEARCH</string>
+    <string name="News_3_3">REPO RATE</string>
+    <string name="News_3_4">UTOPIA BACKS OUT</string>
+    <string name="News_4_1">INCREASE IN NPAS</string>
+    <string name="News_4_2">GREATEST AI ACHIEVEMENT</string>
+    <string name="News_4_3"> Dr. Utopia SCAM</string>
+    <string name="News_4_4">SOLAR</string>
+    <string name="News_5_1">UPGRADE ! </string>
+    <string name="News_5_2">BEST ONLINE EDU !</string>
+    <string name="News_5_3"> SAFETY FIRST !</string>
+    <string name="News_5_4">SOME PEACE  FINALLY</string>
 </resources>
+
+
