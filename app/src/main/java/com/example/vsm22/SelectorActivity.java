@@ -82,10 +82,16 @@ public class SelectorActivity extends AppCompatActivity {
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                                     if(documentSnapshot.exists()){
                                         Important data = documentSnapshot.toObject(Important.class);
-                                        Intent intent = new Intent(SelectorActivity.this , MainActivity.class);
-                                        intent.putExtra("roundNo", data.roundNo);
-                                        startActivity(intent);
-                                        finish();
+                                        if(data.gameStart == 1) {
+                                            Intent intent = new Intent(SelectorActivity.this, MainActivity.class);
+                                            intent.putExtra("roundNo", data.roundNo);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                        else {
+                                            Toast.makeText(SelectorActivity.this, "Wait for the Game to start", Toast.LENGTH_LONG).show();
+                                            loader.setVisibility(View.GONE);
+                                        }
                                     }
                                 }
                             });
