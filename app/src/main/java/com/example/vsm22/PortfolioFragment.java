@@ -146,10 +146,17 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
                         }
                     }
                 });
-
+              switch (position){
+                  case 0: holder.cyptoImage.setImageResource(R.drawable.bitcoin);
+                  break;
+                  case 1: holder.cyptoImage.setImageResource(R.drawable.dogecoin);
+                      break;
+                  case 2: holder.cyptoImage.setImageResource(R.drawable.eth);
+                      break;
+              }
                 AnimationDrawable animationDrawable=(AnimationDrawable) holder.constraintLayout.getBackground();
-                animationDrawable.setEnterFadeDuration(2000);
-                animationDrawable.setExitFadeDuration(4000);
+                animationDrawable.setEnterFadeDuration(1000);
+                animationDrawable.setExitFadeDuration(2000);
                 animationDrawable.start();
             }
 

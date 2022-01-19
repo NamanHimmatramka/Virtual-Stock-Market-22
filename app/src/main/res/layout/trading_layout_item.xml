@@ -12,6 +12,7 @@
 
 
         <TextView
+            android:inputType="number"
             android:id="@+id/TV_stock_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,31 +26,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <ImageView
         android:id="@+id/tv_stock_price_crypto"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="25dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/questrial"
-        android:text="Price:1 "
-        android:textColor="@color/white"
+        android:src="@drawable/bitcoin"
         app:layout_constraintBottom_toBottomOf="@+id/tv_stock_price_crypto2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_stock_price_crypto2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/tv_stock_price_crypto2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/questrial"
-            android:text="Price:2 "
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@+id/tv_stock_price_crypto3"
-            app:layout_constraintHorizontal_bias="0.386"
-            app:layout_constraintStart_toEndOf="@+id/TV_stock_price_crypto1_value"
-            app:layout_constraintTop_toBottomOf="@+id/TV_stock_name" />
+    <ImageView
+        android:id="@+id/tv_stock_price_crypto2"
+        android:layout_width="25dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/dogecoin"
+        app:layout_constraintEnd_toStartOf="@+id/tv_stock_price_crypto3"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toEndOf="@+id/TV_stock_price_crypto1_value"
+        app:layout_constraintTop_toBottomOf="@+id/TV_stock_name" />
 
     <TextView
         android:id="@+id/TV_stock_price_crypto2_value"
@@ -60,51 +57,47 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/tv_stock_price_crypto2"
         app:layout_constraintEnd_toStartOf="@+id/tv_stock_price_crypto3"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toEndOf="@+id/tv_stock_price_crypto2"
         app:layout_constraintTop_toTopOf="@+id/tv_stock_price_crypto2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.551" />
 
     <TextView
-            android:id="@+id/TV_stock_price_crypto1_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/questrial"
-            android:text="100"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_stock_price_crypto"
-            app:layout_constraintStart_toEndOf="@+id/tv_stock_price_crypto"
-            app:layout_constraintTop_toTopOf="@+id/tv_stock_price_crypto"
-            app:layout_constraintVertical_bias="0.0" />
+        android:id="@+id/TV_stock_price_crypto1_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/questrial"
+        android:text="100"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_stock_price_crypto"
+        app:layout_constraintStart_toEndOf="@+id/tv_stock_price_crypto"
+        app:layout_constraintTop_toTopOf="@+id/tv_stock_price_crypto"
+        app:layout_constraintVertical_bias="0.551" />
 
-        <TextView
-            android:id="@+id/tv_stock_price_crypto3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:fontFamily="@font/questrial"
-            android:text="Price:3 "
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_stock_price_crypto2"
-            app:layout_constraintEnd_toStartOf="@+id/TV_stock_price_crypto3_value"
-            app:layout_constraintTop_toTopOf="@+id/tv_stock_price_crypto2" />
+    <ImageView
+        android:id="@+id/tv_stock_price_crypto3"
+        android:layout_width="30dp"
+        android:layout_height="58dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/eth"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_stock_price_crypto2"
+        app:layout_constraintEnd_toStartOf="@+id/TV_stock_price_crypto3_value"
+        app:layout_constraintTop_toTopOf="@+id/tv_stock_price_crypto2" />
 
-        <TextView
-            android:id="@+id/TV_stock_price_crypto3_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:fontFamily="@font/questrial"
-            android:text="100"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_stock_price_crypto3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_stock_price_crypto3"
-            app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:id="@+id/TV_stock_price_crypto3_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/questrial"
+        android:text="100"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_stock_price_crypto3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_stock_price_crypto3"
+        app:layout_constraintVertical_bias="0.551" />
 
-        <androidx.appcompat.widget.AppCompatButton
+    <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/BT_Buy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -134,6 +127,7 @@
             android:hint="Quantity"
             android:textColorHint="#777676"
             android:textSize="18dp"
+            android:inputType="number"
             app:layout_constraintBottom_toBottomOf="@+id/BT_Buy"
             app:layout_constraintStart_toEndOf="@+id/BT_Buy"
             app:layout_constraintTop_toTopOf="@+id/BT_Buy"
@@ -169,7 +163,7 @@
             android:ems="10"
             android:fontFamily="@font/questrial"
             android:hint="Quantity"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:textColorHint="#777676"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/BT_sell"

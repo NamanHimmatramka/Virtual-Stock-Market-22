@@ -30,8 +30,8 @@ public class SelectorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selector);
 
-        mainGame = findViewById(R.id.CV_mainGame);
-        trialGame = findViewById(R.id.CV_trialRound);
+       mainGame = findViewById(R.id.CV_mainGame);
+//        trialGame = findViewById(R.id.CV_trialRound);
 
         sponsors = findViewById(R.id.CV_sponsors);
         loader = findViewById(R.id.loader);
@@ -125,14 +125,14 @@ public class SelectorActivity extends AppCompatActivity {
             }
         });
 
-        trialGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loader.setVisibility(View.VISIBLE);
-                loader.bringToFront();
-
-                // loader.setVisibility(View.GONE);
-            }
-        });
+//        trialGame.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                loader.setVisibility(View.VISIBLE);
+//                loader.bringToFront();
+//
+//                // loader.setVisibility(View.GONE);
+//            }
+//        });
     }
 }
