@@ -28,10 +28,12 @@ TextView insiderTV;
 Boolean check_loan=true;
 CardView insiderCV,loanCV;
 FirebaseFirestore db;
+int[] insiderTradingThisRound;
 int roundNo;
-    public PowercardsFragment(int roundNo) {
+    public PowercardsFragment(int roundNo, int[] insiderTradingThisRound) {
         // Required empty public constructor
         this.roundNo=roundNo;
+        this.insiderTradingThisRound = insiderTradingThisRound;
     }
 
     @Override
@@ -56,7 +58,27 @@ int roundNo;
                 insiderFunction(view);
             }
         });
-
+        if(insiderTradingThisRound[0] == 1){
+            insiderIV.setAlpha((float) 0.3);
+            insiderTV.setVisibility(View.VISIBLE);
+            switch (roundNo) {
+                case 1:
+                    insiderTV.setText("Insider news: " + roundNo);
+                    break;
+                case 2:
+                    insiderTV.setText("Insider news: " + roundNo);
+                    break;
+                case 3:
+                    insiderTV.setText("Insider news: " + roundNo);
+                    break;
+                case 4:
+                    insiderTV.setText("Insider news: " + roundNo);
+                    break;
+                case 5:
+                    insiderTV.setText("Insider news: " + roundNo);
+                    break;
+            }
+        }
         loanCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +110,7 @@ int roundNo;
                     if(user.insiderTrading == 0)
                         Toast.makeText(view.getContext(),"Insider Trading already used",Toast.LENGTH_SHORT).show();
                     else{
+                        insiderTradingThisRound[0] = 1;
                         AlertDialog alertDialog = new AlertDialog.Builder(view.getContext())
                                 .setTitle("Confirmation")
                                 .setMessage("Are you sure you want to use Insider Trading")

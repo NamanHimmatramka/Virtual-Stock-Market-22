@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     TextView timer;
     int roundNo;
     FirebaseFirestore db;
+    int[] insiderTradingThisRound;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         timer = findViewById(R.id.timer);
         roundNo = getIntent().getExtras().getInt("roundNo");
         db = FirebaseFirestore.getInstance();
+        insiderTradingThisRound = new int[1];
 
         getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new PortfolioFragment()).commit();
 
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.tradingCenter: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new TradingFragment()).commit();
                     return true;
 
-                    case R.id.powercards: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new PowercardsFragment(roundNo)).commit();
+                    case R.id.powercards: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new PowercardsFragment(roundNo, insiderTradingThisRound)).commit();
                     return true;
 
                 }
