@@ -1,7 +1,10 @@
 package com.example.vsm22;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
@@ -12,11 +15,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.vsm22.models.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class PowercardsFragment extends Fragment {
 ImageView loanIV,insiderIV;
 TextView insiderTV;
-Boolean check_insider=true, check_loan=true;
+Boolean check_loan=true;
 CardView insiderCV,loanCV;
+FirebaseFirestore db;
 int roundNo;
     public PowercardsFragment(int roundNo) {
         // Required empty public constructor
@@ -33,6 +44,7 @@ int roundNo;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_powercards, container, false);
+        db = FirebaseFirestore.getInstance();
         insiderIV=view.findViewById(R.id.IV_insider);
         insiderTV=view.findViewById(R.id.TV_insider);
         loanIV=view.findViewById(R.id.IV_loan);
@@ -56,6 +68,7 @@ int roundNo;
     }
 
     private void loanFunction(View view) {
+
         if(check_loan==true){
             check_loan=false;
             loanIV.setAlpha((float) 0.3);
@@ -67,30 +80,59 @@ int roundNo;
     }
 
     private void insiderFunction(View view) {
-        if(check_insider==true){
-           check_insider=false;
-           insiderIV.setAlpha((float) 0.3);
-           insiderTV.setVisibility(View.VISIBLE);
-           switch (roundNo) {
-               case 1:
-                   insiderTV.setText("Insider news: " + roundNo);
-                   break;
-               case 2:
-                   insiderTV.setText("Insider news: " + roundNo);
-                   break;
-               case 3:
-                   insiderTV.setText("Insider news: " + roundNo);
-                   break;
-               case 4:
-                   insiderTV.setText("Insider news: " + roundNo);
-                   break;
-               case 5:
-                   insiderTV.setText("Insider news: " + roundNo);
-                   break;
-           }
-        }
-        else{
-            Toast.makeText(view.getContext(),"Loan already used",Toast.LENGTH_SHORT).show();
-        }
+        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    User user = documentSnapshot.toObject(User.class);
+                    if(user.insiderTrading == 0)
+                        Toast.makeText(view.getContext(),"Insider Trading already used",Toast.LENGTH_SHORT).show();
+                    else{
+                        AlertDialog alertDialog = new AlertDialog.Builder(view.getContext())
+                                .setTitle("Confirmation")
+                                .setMessage("Are you sure you want to use Insider Trading")
+                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        insiderIV.setAlpha((float) 0.3);
+                                        insiderTV.setVisibility(View.VISIBLE);
+                                        switch (roundNo) {
+                                            case 1:
+                                                insiderTV.setText("Insider news: " + roundNo);
+                                                break;
+                                            case 2:
+                                                insiderTV.setText("Insider news: " + roundNo);
+                                                break;
+                                            case 3:
+                                                insiderTV.setText("Insider news: " + roundNo);
+                                                break;
+                                            case 4:
+                                                insiderTV.setText("Insider news: " + roundNo);
+                                                break;
+                                            case 5:
+                                                insiderTV.setText("Insider news: " + roundNo);
+                                                break;
+                                        }
+                                        user.insiderTrading = 0;
+                                        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
+                                    }
+                                }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Toast.makeText(view.getContext(), "Powercard not used", Toast.LENGTH_LONG).show();
+                                    }
+                                })
+                                .show();
+
+                    }
+
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 }
