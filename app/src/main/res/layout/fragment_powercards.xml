@@ -43,27 +43,45 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/backpowercard2"
-                android:layout_width="wrap_content"
+                android:id="@+id/LL_insider"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
                     android:layout_margin="5dp"
-                    app:cardCornerRadius="30dp">
+                    android:id="@+id/CV_insider"
+                    app:cardCornerRadius="30dp"
+                    app:cardBackgroundColor="@color/black">
+
+                    <TextView
+
+                        android:layout_gravity="center_vertical"
+                        android:textSize="24sp"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:id="@+id/TV_insider"
+                        android:textColor="@color/white"
+                        android:gravity="center_horizontal"
+                        android:fontFamily="@font/questrial"
+                        android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="insider news" />
 
                     <ImageView
-                        android:id="@+id/powercard2"
+                        android:id="@+id/IV_insider"
                         android:layout_width="wrap_content"
                         android:layout_height="250dp"
                         android:layout_gravity="center"
                         android:scaleType="fitXY"
                         android:src="@drawable/insider_trade"
                         android:text="powercard2"
+                        tools:alpha="0.4"
                         android:visibility="visible"
                         tools:visibility="visible" />
                 </androidx.cardview.widget.CardView>
@@ -99,19 +117,22 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/powercard3back"
-                android:layout_width="wrap_content"
+                android:id="@+id/LL_Loan"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:orientation="vertical">
                 <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
                     android:layout_margin="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="25dp">
+                    android:id="@+id/CV_LOAN"
+                    app:cardCornerRadius="30dp"
+                    app:cardBackgroundColor="@color/black">
 
                     <ImageView
+                        android:id="@+id/IV_loan"
                         android:layout_width="wrap_content"
                         android:layout_height="268dp"
                         android:layout_gravity="center"

@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.tradingCenter: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new TradingFragment()).commit();
                     return true;
 
-                    case R.id.powercards: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new PowercardsFragment()).commit();
+                    case R.id.powercards: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new PowercardsFragment(roundNo)).commit();
                     return true;
 
                 }
