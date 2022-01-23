@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="Sponsors"
-                android:textColor="#F8E00F"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="Main Game"
-                android:textColor="#F8E00F"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
