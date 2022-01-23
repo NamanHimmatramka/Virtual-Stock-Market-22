@@ -27,6 +27,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.text.DecimalFormat;
+
 public class PortfolioFragment extends Fragment {
 RecyclerView recyclerView,recyclerView_crypto;
 private FirebaseFirestore firebaseFirestore,firebaseFirestore2;
@@ -134,15 +136,18 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
             @Override
             protected void onBindViewHolder( PortfolioFragment.CryptoViewHolder holder, int position,Currency model) {
                 holder.cryptoName.setText(model.getcryptoName());
+                double s= model.getcryptoPriceInRupees();
 
-                holder.cryptoPriceInRupees.setText(model.getcryptoPriceInRupees()+"");
+                holder.cryptoPriceInRupees.setText(String.format("%.2f",s));
                 firebaseFirestore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if(documentSnapshot.exists()){
                             User user=documentSnapshot.toObject(User.class);
                             holder.cryptoOwned.setText(user.currencyOwned.get(position)+"");
-                            holder.cryptoNetWorth.setText(user.currencyOwned.get(position)*model.getcryptoPriceInRupees()+"");
+                           // holder.cryptoNetWorth.setText(user.currencyOwned.get(position)*model.getcryptoPriceInRupees()+"");
+                           double temp=user.currencyOwned.get(position)*model.getcryptoPriceInRupees();
+                            holder.cryptoNetWorth.setText(String.format("%.2f",temp));
                         }
                     }
                 });

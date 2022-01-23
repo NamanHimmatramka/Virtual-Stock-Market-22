@@ -35,7 +35,7 @@ public class SelectorActivity extends AppCompatActivity {
 
         sponsors = findViewById(R.id.CV_sponsors);
         loader = findViewById(R.id.loader);
-
+        loader.setVisibility(View.GONE);
 
 
 //        db.collection("registeredUsers").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -86,6 +86,7 @@ public class SelectorActivity extends AppCompatActivity {
                                             Intent intent = new Intent(SelectorActivity.this, MainActivity.class);
                                             intent.putExtra("roundNo", data.roundNo);
                                             startActivity(intent);
+                                            loader.setVisibility(View.GONE);
                                             finish();
                                         }
                                         else {
@@ -122,6 +123,7 @@ public class SelectorActivity extends AppCompatActivity {
                 loader.bringToFront();
                 Intent intent = new Intent(SelectorActivity.this, SponsorsActivity.class);
                 startActivity(intent);
+                loader.setVisibility(View.GONE);
             }
         });
 

@@ -1,5 +1,3 @@
-
-
 <resources>
     <string name="app_name">VSM\'22</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -34,6 +32,29 @@
     <string name="News_5_2">BEST ONLINE EDU !</string>
     <string name="News_5_3"> SAFETY FIRST !</string>
     <string name="News_5_4">SOME PEACE  FINALLY</string>
+
+    <!--    //Headings-->
+    <string name="heading_one">What is VSM? </string>
+    <string name="heading_two">Stock and Cryptos</string>
+    <string name="heading_three">Trade based on news</string>
+    <string name="heading_fourth">Use Powercards to increase your chances</string>
+
+    <!--    //Description-->
+    <string name="desc_one">Grow your Business By Accepting Card Payments with The New Card Reader</string>
+    <string name="desc_two">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
+    <string name="desc_three">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
+    <string name="desc_fourth">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
+    <string name="title_activity_on_boarding">OnBoardingActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+
 </resources>
 
 
