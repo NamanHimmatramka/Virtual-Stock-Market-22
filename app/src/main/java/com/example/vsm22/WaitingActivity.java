@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class WaitingActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         leaderboard = findViewById(R.id.leaderboardRV);
         leaderboard.setLayoutManager(new LinearLayoutManager(this));
-        db.collection("users").orderBy("netWorth").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        db.collection("users").orderBy("netWorth", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 if(!queryDocumentSnapshots.isEmpty()){

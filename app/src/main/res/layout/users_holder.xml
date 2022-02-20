@@ -58,7 +58,7 @@
                 android:paddingRight="10sp"
                 android:text="100000"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="12sp"
                 app:layout_gravity="center_vertical" />
         </androidx.gridlayout.widget.GridLayout>
 
