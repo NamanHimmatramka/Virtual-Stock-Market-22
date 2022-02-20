@@ -4,4 +4,6 @@ public class Important {
     public int gameStart;
     public int roundNo;
     public int nextRound;
+    public int isRoundActive;
+    public int leaderboard;
 }

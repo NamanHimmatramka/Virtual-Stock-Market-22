@@ -1,8 +1,10 @@
 package com.example.vsm22;
 
+import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -15,12 +17,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.vsm22.models.Currency;
 import com.example.vsm22.models.Stock;
+import com.example.vsm22.models.StockHistory;
 import com.example.vsm22.models.User;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -31,10 +36,15 @@ import java.text.DecimalFormat;
 
 public class PortfolioFragment extends Fragment {
 RecyclerView recyclerView,recyclerView_crypto;
+int roundN;
 private FirebaseFirestore firebaseFirestore,firebaseFirestore2;
 private FirestoreRecyclerAdapter adapter,adapter_crypto;
     public PortfolioFragment() {
 
+    }
+
+    public PortfolioFragment(int roundNo) {
+this.roundN=roundNo;
     }
 
 
@@ -102,7 +112,43 @@ private FirestoreRecyclerAdapter adapter,adapter_crypto;
             @Override
             protected void onBindViewHolder( PortfolioFragment.StockViewHolder holder, int position, Stock model) {
                 holder.stockName.setText(model.getStockName());
-                holder.stockPriceInRupees.setText(model.getStockPriceInRupees()+"");
+                firebaseFirestore.collection("stockHistory").document("Stock"+(position+1)).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists()){
+                        holder.stockPriceInRupees.setText(model.getStockPriceInRupees()+"");
+                            StockHistory stockHistory=documentSnapshot.toObject(StockHistory.class);
+                           double isIncreased=0;
+                            switch (roundN){
+
+                                case 2: isIncreased=stockHistory.round2-stockHistory.round1;
+                                break;
+                                case 3: isIncreased=stockHistory.round3-stockHistory.round2;
+                                break;
+                                case 4: isIncreased=stockHistory.round4-stockHistory.round3;
+                                break;
+                                case 5: isIncreased=stockHistory.round5-stockHistory.round4;
+                                break;
+
+                            }
+                            if(isIncreased>0){
+                             holder.stockPriceInRupees.setTextColor(getResources().getColor(R.color.green));
+                            }
+                            else{
+                                holder.stockPriceInRupees.setTextColor(getResources().getColor(R.color.red));
+                                //Toast.makeText(getActivity(), isIncreased+"", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                       // Toast.makeText(getContext(), "Failure", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
 
                 firebaseFirestore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override

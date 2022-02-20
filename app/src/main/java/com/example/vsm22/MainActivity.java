@@ -1,6 +1,7 @@
 package com.example.vsm22;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.os.CountDownTimer;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.vsm22.models.Important;
 import com.example.vsm22.models.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -16,7 +18,9 @@ import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -40,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         insiderTradingThisRound = new int[1];
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new PortfolioFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new PortfolioFragment(roundNo)).commit();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.portfolio: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new PortfolioFragment()).commit();
+                    case R.id.portfolio: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new PortfolioFragment(roundNo)).commit();
                     return true;
 
                     case R.id.news: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new NewsFragment(roundNo)).commit();
@@ -83,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                             User user = documentSnapshot.toObject(User.class);
                             user.status = "waiting";
                             db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
-                            Intent intent = new Intent(MainActivity.this, WaitingActivity.class);
+                            Intent intent = new Intent(MainActivity.this, WaitingActivity2.class);
                             startActivity(intent);
                             finish();
                         }
@@ -96,10 +100,24 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         }.start();
+
+        db.collection("information").document("values").addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+             if(value.exists()){
+                 Important important=value.toObject(Important.class);
+                 if(important.isRoundActive==0){
+                     startActivity(new Intent(getApplicationContext(),WaitingActivity2.class));
+                 }
+             }
+            }
+        });
     }
 
     @Override
     public void onBackPressed() {
 
     }
+
+
 }
