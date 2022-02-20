@@ -2,6 +2,8 @@ package com.example.vsm22;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,11 +18,16 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class WaitingActivity extends AppCompatActivity {
 
     Button nextRound;
     FirebaseFirestore db;
+    RecyclerView leaderboard;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +35,27 @@ public class WaitingActivity extends AppCompatActivity {
 
         nextRound = findViewById(R.id.nextRound);
         db = FirebaseFirestore.getInstance();
+        leaderboard = findViewById(R.id.leaderboardRV);
+        leaderboard.setLayoutManager(new LinearLayoutManager(this));
+        db.collection("users").orderBy("netWorth").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                if(!queryDocumentSnapshots.isEmpty()){
+                    List<DocumentSnapshot> usersDs = queryDocumentSnapshots.getDocuments();
+                    ArrayList<User> users = new ArrayList<>();
+                    for(DocumentSnapshot ds : usersDs){
+                        users.add(ds.toObject(User.class));
+                    }
+                    LeaderboardRVAdapter adapter = new LeaderboardRVAdapter(users);
+                    leaderboard.setAdapter(adapter);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
 
+            }
+        });
         nextRound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

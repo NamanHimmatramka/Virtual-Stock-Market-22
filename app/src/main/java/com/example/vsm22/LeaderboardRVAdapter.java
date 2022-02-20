@@ -8,11 +8,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.vsm22.models.User;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class LeaderboardRVAdapter extends RecyclerView.Adapter<LeaderboardRVViewHolder>{
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+import java.util.ArrayList;
 
+public class LeaderboardRVAdapter extends RecyclerView.Adapter<LeaderboardRVViewHolder>{
+    ArrayList<User> users;
+
+    public LeaderboardRVAdapter(ArrayList<User> users){
+        this.users = users;
+    }
     @NonNull
     @Override
     public LeaderboardRVViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -22,12 +28,14 @@ public class LeaderboardRVAdapter extends RecyclerView.Adapter<LeaderboardRVView
 
     @Override
     public void onBindViewHolder(@NonNull LeaderboardRVViewHolder holder, int position) {
-
+        holder.rank.setText((position+1)+"");
+        holder.userName.setText(users.get(position).userName);
+        holder.netWorth.setText(users.get(position).netWorth+"");
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return users.size();
     }
 }
 
