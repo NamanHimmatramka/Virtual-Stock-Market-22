@@ -109,6 +109,7 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                                            db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
                                                            Toast.makeText(context, "Transaction Successful", Toast.LENGTH_LONG).show();
                                                            holder.buyQuantity.setText("");
+                                                           holder.buySpinner.setSelection(0);
                                                        }
                                                    })
                                                    .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -120,8 +121,10 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                                    .show();
                                        }
                                    });}
-                                   else
-                                       Toast.makeText(context, "You don't have enough "+buyCurrency.getcryptoName()+"s" , Toast.LENGTH_LONG).show();
+                                   else {
+                                       holder.buySpinner.setSelection(0);
+                                       Toast.makeText(context, "You don't have enough " + buyCurrency.getcryptoName() + "s", Toast.LENGTH_LONG).show();
+                                   }
                                }
                            }
                        });
@@ -188,6 +191,7 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                                             db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
                                                             Toast.makeText(context, "Transaction Successful", Toast.LENGTH_LONG).show();
                                                             holder.sellQuantity.setText("");
+                                                            holder.sellSpinner.setSelection(0);
                                                         }
                                                     })
                                                     .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -199,8 +203,10 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                                     .show();
                                         }
                                     });}
-                                    else
-                                        Toast.makeText(context, "You dont have enough "+model.getStockName()+"s", Toast.LENGTH_LONG).show();
+                                    else {
+                                        holder.sellSpinner.setSelection(0);
+                                        Toast.makeText(context, "You dont have enough " + model.getStockName() + "s", Toast.LENGTH_LONG).show();
+                                    }
                                 }
                             }
                         });
