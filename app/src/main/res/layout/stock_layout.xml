@@ -29,8 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginRight="120dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="@font/questrial"
         android:text="Stock Name"
         android:textColor="@color/white"
@@ -38,7 +38,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/IV_stock"
         app:layout_constraintEnd_toStartOf="@+id/TV_stock_worth_number"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/IV_stock"
         app:layout_constraintTop_toTopOf="@+id/IV_stock"
         app:layout_constraintVertical_bias="1.0" />
