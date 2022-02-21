@@ -59,7 +59,7 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                             buyCurrency = currency1;
                         }
                         else if(parent.getItemAtPosition(position1).toString().equals("CryptoTwo")){
-                            buyPrice = model.getStockPriceInRupees()/currency1.getcryptoPriceInRupees();
+                            buyPrice = model.getStockPriceInRupees()/currency2.getcryptoPriceInRupees();
                             buyCurrency = currency2;
                         }
                         else if(parent.getItemAtPosition(position1).toString().equals("CryptoThree")){
