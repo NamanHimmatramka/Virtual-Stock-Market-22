@@ -8,6 +8,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,6 +34,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 public class PortfolioFragment extends Fragment {
 RecyclerView recyclerView,recyclerView_crypto;
@@ -132,10 +134,20 @@ this.roundN=roundNo;
 
                             }
                             if(isIncreased>0){
-                             holder.stockPriceInRupees.setTextColor(getResources().getColor(R.color.green));
+                                try {
+                                    holder.stockPriceInRupees.setTextColor(ContextCompat.getColor(requireContext(), R.color.green));
+                                }
+                                catch (Exception e){
+
+                                }
                             }
                             else{
-                                holder.stockPriceInRupees.setTextColor(getResources().getColor(R.color.red));
+                                try {
+                                    holder.stockPriceInRupees.setTextColor(ContextCompat.getColor(requireContext(), R.color.red));
+                                }
+                                catch (Exception e){
+
+                                }
                                 //Toast.makeText(getActivity(), isIncreased+"", Toast.LENGTH_SHORT).show();
                             }
 

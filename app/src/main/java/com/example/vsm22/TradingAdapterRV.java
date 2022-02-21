@@ -100,6 +100,7 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                    holder.buyButton.setOnClickListener(new View.OnClickListener() {
                                        @Override
                                        public void onClick(View v) {
+                                           holder.buySpinner.setSelection(0);
                                            AlertDialog alertDialog = new AlertDialog.Builder(context)
                                                    .setTitle("Confirmation")
                                                    .setMessage("Are you sure you want to buy these stocks using "+buyPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())))
@@ -109,7 +110,6 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                                            db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
                                                            Toast.makeText(context, "Transaction Successful", Toast.LENGTH_LONG).show();
                                                            holder.buyQuantity.setText("");
-                                                           holder.buySpinner.setSelection(0);
                                                        }
                                                    })
                                                    .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -182,6 +182,7 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                     holder.sellButton.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
+                                            holder.sellSpinner.setSelection(0);
                                             AlertDialog alertDialog = new AlertDialog.Builder(context)
                                                     .setTitle("Confirmation")
                                                     .setMessage("Are you sure you want to sell these stocks for "+ sellPrice * (Integer.parseInt(holder.sellQuantity.getText().toString())))
@@ -191,7 +192,6 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                                             db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
                                                             Toast.makeText(context, "Transaction Successful", Toast.LENGTH_LONG).show();
                                                             holder.sellQuantity.setText("");
-                                                            holder.sellSpinner.setSelection(0);
                                                         }
                                                     })
                                                     .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
