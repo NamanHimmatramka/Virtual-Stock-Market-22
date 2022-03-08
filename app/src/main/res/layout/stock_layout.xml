@@ -2,14 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CV_stockItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/itemview_stock3"
-    android:id="@+id/CV_stockItem"
     android:alpha="0.9"
+    android:background="@drawable/itemview_stock3"
     android:paddingLeft="10dp"
-    android:paddingBottom="10dp"
-    android:paddingRight="10dp">
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp">
 
     <ImageView
 
@@ -28,50 +29,45 @@
         android:id="@+id/TV_stockName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="6dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="16dp"
+
+        android:layout_marginStart="16dp"
         android:fontFamily="@font/questrial"
         android:text="Stock Name"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/IV_stock"
-        app:layout_constraintEnd_toStartOf="@+id/TV_stock_worth_number"
         app:layout_constraintStart_toEndOf="@+id/IV_stock"
-        app:layout_constraintTop_toTopOf="@+id/IV_stock"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/IV_stock" />
 
     <TextView
         android:id="@+id/TV_stock_worth_number"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:fontFamily="@font/questrial"
-        android:text="1000.0"
         android:gravity="right"
+        android:text="1000.0"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/TV_stockName"
+        app:layout_constraintBottom_toBottomOf="@+id/TV_stock_number"
         app:layout_constraintEnd_toStartOf="@+id/TV_stock_number"
-        app:layout_constraintTop_toTopOf="@+id/TV_stockName"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintTop_toTopOf="@+id/TV_stock_number"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/TV_stock_number"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:fontFamily="@font/questrial"
-        android:text="100"
         android:gravity="right"
+        android:text="100"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/TV_stock_worth_number"
+        app:layout_constraintBottom_toBottomOf="@+id/TV_net_Stock_worth"
         app:layout_constraintEnd_toStartOf="@+id/TV_net_Stock_worth"
-        app:layout_constraintTop_toTopOf="@+id/TV_stock_worth_number"
+        app:layout_constraintTop_toTopOf="@+id/TV_net_Stock_worth"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -84,8 +80,7 @@
         android:text="100000.0"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/TV_stock_number"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/TV_stock_number"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
