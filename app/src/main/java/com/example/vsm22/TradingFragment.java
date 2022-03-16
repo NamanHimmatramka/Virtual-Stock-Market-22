@@ -55,15 +55,16 @@ private TradingAdapterRV adapter;
         TextView crypto1 = view.findViewById(R.id.textView);
         TextView crypto2 = view.findViewById(R.id.textView2);
         TextView crypto3 = view.findViewById(R.id.textView3);
-        db.collection("crypto").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                List<DocumentSnapshot> ds= queryDocumentSnapshots.getDocuments();
-                crypto1.setText(ds.get(0).toObject(Currency.class).getcryptoPriceInRupees()+"");
-                crypto2.setText(ds.get(1).toObject(Currency.class).getcryptoPriceInRupees()+"");
-                crypto3.setText(ds.get(2).toObject(Currency.class).getcryptoPriceInRupees()+"");
-            }
-        }).addOnFailureListener(new OnFailureListener() {
+        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                                                                                            @Override
+                                                                                                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                                                                                                User user = documentSnapshot.toObject(User.class);
+                                                                                                                                crypto1.setText(user.currencyOwned.get(0)+"");
+                                                                                                                                crypto2.setText(user.currencyOwned.get(1)+"");
+                                                                                                                                crypto3.setText(user.currencyOwned.get(2)+"");
+                                                                                                                            }
+                                                                                                                        }
+        ).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
 

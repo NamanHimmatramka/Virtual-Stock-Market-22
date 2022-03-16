@@ -54,15 +54,15 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                     Currency buyCurrency;
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
-                        if(parent.getItemAtPosition(position1).toString().equals("CryptoOne")){
+                        if(parent.getItemAtPosition(position1).toString().equals("Cheems Coin")){
                             buyPrice = model.getStockPriceInRupees()/currency1.getcryptoPriceInRupees();
                             buyCurrency = currency1;
                         }
-                        else if(parent.getItemAtPosition(position1).toString().equals("CryptoTwo")){
+                        else if(parent.getItemAtPosition(position1).toString().equals("Surreal Coin")){
                             buyPrice = model.getStockPriceInRupees()/currency2.getcryptoPriceInRupees();
                             buyCurrency = currency2;
                         }
-                        else if(parent.getItemAtPosition(position1).toString().equals("CryptoThree")){
+                        else if(parent.getItemAtPosition(position1).toString().equals("Pepe Coin")){
                             buyPrice = model.getStockPriceInRupees()/currency3.getcryptoPriceInRupees();
                             buyCurrency = currency3;
                         }
@@ -141,15 +141,15 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                     Currency sellCurrency;
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
-                        if(parent.getItemAtPosition(position1).toString().equals("CryptoOne")){
+                        if(parent.getItemAtPosition(position1).toString().equals("Cheems Coin")){
                             sellPrice = model.getStockPriceInRupees()/currency1.getcryptoPriceInRupees();
                             sellCurrency = currency1;
                         }
-                        else if(parent.getItemAtPosition(position1).toString().equals("CryptoTwo")){
+                        else if(parent.getItemAtPosition(position1).toString().equals("Surreal Coin")){
                             sellPrice = model.getStockPriceInRupees()/currency2.getcryptoPriceInRupees();
                             sellCurrency = currency2;
                         }
-                        else if(parent.getItemAtPosition(position1).toString().equals("CryptoThree")){
+                        else if(parent.getItemAtPosition(position1).toString().equals("Pepe Coin")){
                             sellPrice = model.getStockPriceInRupees()/currency3.getcryptoPriceInRupees();
                             sellCurrency = currency3;
                         }

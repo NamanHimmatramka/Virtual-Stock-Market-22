@@ -6,4 +6,5 @@ public class Important {
     public int nextRound;
     public int isRoundActive;
     public int leaderboard;
+    public int day;
 }

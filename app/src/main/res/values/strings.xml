@@ -10,9 +10,9 @@
         <item>@string/Crypto03</item>
     </string-array>
     <string name="None">Select One</string>
-    <string name="Crypto01">CryptoOne</string>
-    <string name="Crypto02">CryptoTwo</string>
-    <string name="Crypto03">CryptoThree</string>
+    <string name="Crypto01">Cheems Coin</string>
+    <string name="Crypto02">Surreal Coin</string>
+    <string name="Crypto03">Pepe Coin</string>
     <string name="News_1_1">The Albuquerque cartel was led by Heisenberg. He was friends with the CEO of American airlines, which helped him to smuggle the drugs and gold</string>
     <string name="News_1_2">The Mumbai cartel handled by Gaitonde was taking his architecture industry to new heights.His properties were one of the best in Mumbai and so was the cost for it.</string>
     <string name="News_1_3">Pablo Escobar, Head of Colombian Cartel, was in New York for a meeting with one of its drug clients.</string>
