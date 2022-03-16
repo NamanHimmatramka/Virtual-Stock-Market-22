@@ -20,6 +20,7 @@ import com.example.vsm22.models.User;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -51,6 +52,23 @@ private TradingAdapterRV adapter;
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_trading, container, false);
         db=FirebaseFirestore.getInstance();
+        TextView crypto1 = view.findViewById(R.id.textView);
+        TextView crypto2 = view.findViewById(R.id.textView2);
+        TextView crypto3 = view.findViewById(R.id.textView3);
+        db.collection("crypto").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<DocumentSnapshot> ds= queryDocumentSnapshots.getDocuments();
+                crypto1.setText(ds.get(0).toObject(Currency.class).getcryptoPriceInRupees()+"");
+                crypto2.setText(ds.get(1).toObject(Currency.class).getcryptoPriceInRupees()+"");
+                crypto3.setText(ds.get(2).toObject(Currency.class).getcryptoPriceInRupees()+"");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
         recyclerView=(RecyclerView)view.findViewById(R.id.RV_trading);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         Query query=db.collection("stocks");

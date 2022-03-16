@@ -17,7 +17,7 @@ public class User {
         this.uid=uid;
         this.userName=userName;
         this.insiderTrading=1;
-        for(int i=0; i<3; i++){
+        for(int i=0; i<6; i++){
             noOfStocksOwned.add((i+1)*10);
             currencyOwned.add((i+1)*10.00);
         }
