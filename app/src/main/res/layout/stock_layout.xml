@@ -12,42 +12,27 @@
     android:paddingRight="10dp"
     android:paddingBottom="10dp">
 
-    <ImageView
-
-        android:id="@+id/IV_stock"
-        android:layout_width="38dp"
-        android:layout_height="46dp"
-        android:layout_margin="5dp"
-        android:padding="3dp"
-        android:src="@drawable/facebook"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
-
     <TextView
         android:id="@+id/TV_stockName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="8dp"
         android:fontFamily="@font/questrial"
         android:text="Stock Name"
         android:textColor="@color/white"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/IV_stock"
-        app:layout_constraintStart_toEndOf="@+id/IV_stock"
-        app:layout_constraintTop_toTopOf="@+id/IV_stock" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/TV_stock_worth_number"
-        android:layout_width="75dp"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="5dp"
         android:fontFamily="@font/questrial"
         android:gravity="right"
-        android:text="1000.0"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/TV_stock_number"
@@ -57,12 +42,12 @@
 
     <TextView
         android:id="@+id/TV_stock_number"
-        android:layout_width="50dp"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="5dp"
         android:fontFamily="@font/questrial"
         android:gravity="right"
-        android:text="100"
+        android:text="10000"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/TV_net_Stock_worth"
@@ -72,12 +57,12 @@
 
     <TextView
         android:id="@+id/TV_net_Stock_worth"
-        android:layout_width="85dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="5dp"
         android:fontFamily="@font/questrial"
         android:gravity="right"
-        android:text="100000.0"
+        android:text="10000000.0"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -141,7 +141,7 @@ this.roundN=roundNo;
 
                                 }
                             }
-                            else{
+                            else if(isIncreased<0){
                                 try {
                                     holder.stockPriceInRupees.setTextColor(ContextCompat.getColor(requireContext(), R.color.red));
                                 }

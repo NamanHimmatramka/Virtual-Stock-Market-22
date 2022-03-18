@@ -37,7 +37,7 @@ public class SelectorActivity extends AppCompatActivity {
 
        mainGame = findViewById(R.id.CV_mainGame);
 //        trialGame = findViewById(R.id.CV_trialRound);
-      logOut=findViewById(R.id.CV_logOut);
+      //logOut=findViewById(R.id.CV_logOut);
         sponsors = findViewById(R.id.CV_sponsors);
         loader = findViewById(R.id.loader);
         loader.setVisibility(View.GONE);
