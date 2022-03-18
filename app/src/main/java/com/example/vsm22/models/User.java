@@ -20,7 +20,7 @@ public class User {
         for(int i=0; i<6; i++){
             noOfStocksOwned.add((i+1)*10);
         }
-        for(int i=0; i<6; i++){
+        for(int i=0; i<1; i++){
             currencyOwned.add((i+1)*10.00);
         }
     }

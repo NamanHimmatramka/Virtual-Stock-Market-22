@@ -191,11 +191,11 @@
         app:layout_constraintStart_toEndOf="@+id/ET_Sell"
         app:layout_constraintTop_toTopOf="@+id/ET_Sell">
 
-        <Spinner
-            android:id="@+id/Spin_sell"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/CryptoCurrency" />
+<!--        <Spinner-->
+<!--            android:id="@+id/Spin_sell"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:entries="@array/CryptoCurrency" />-->
     </LinearLayout>
 
     <LinearLayout
@@ -208,11 +208,11 @@
         app:layout_constraintStart_toEndOf="@+id/ET_Buy"
         app:layout_constraintTop_toTopOf="@+id/ET_Buy">
 
-        <Spinner
-            android:id="@+id/Spin_buy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/CryptoCurrency" />
+<!--        <Spinner-->
+<!--            android:id="@+id/Spin_buy"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:entries="@array/CryptoCurrency" />-->
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

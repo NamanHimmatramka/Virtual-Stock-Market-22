@@ -78,8 +78,8 @@ private TradingAdapterRV adapter;
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 User user = value.toObject(User.class);
                 crypto1.setText(String.format("%.2f",user.currencyOwned.get(0)));
-                crypto2.setText(String.format("%.2f",user.currencyOwned.get(1)));
-                crypto3.setText(String.format("%.2f",user.currencyOwned.get(2)));
+//                crypto2.setText(String.format("%.2f",user.currencyOwned.get(1)));
+//                crypto3.setText(String.format("%.2f",user.currencyOwned.get(2)));
             }
         });
         recyclerView=(RecyclerView)view.findViewById(R.id.RV_trading);

@@ -44,115 +44,156 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 List<DocumentSnapshot> currencies = queryDocumentSnapshots.getDocuments();
                 Currency currency1 = currencies.get(0).toObject(Currency.class);
-                Currency currency2 = currencies.get(1).toObject(Currency.class);
-                Currency currency3 = currencies.get(2).toObject(Currency.class);
+//                Currency currency2 = currencies.get(1).toObject(Currency.class);
+//                Currency currency3 = currencies.get(2).toObject(Currency.class);
                 holder.priceCrypto1.setText(model.getStockPriceInRupees()/currency1.getcryptoPriceInRupees()+"");
-                holder.priceCrypto2.setText(model.getStockPriceInRupees()/currency2.getcryptoPriceInRupees()+"");
-                holder.priceCrypto3.setText(model.getStockPriceInRupees()/currency3.getcryptoPriceInRupees()+"");
-                holder.buySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    double buyPrice;
-                    Currency buyCurrency;
+//                holder.priceCrypto2.setText(model.getStockPriceInRupees()/currency2.getcryptoPriceInRupees()+"");
+//                holder.priceCrypto3.setText(model.getStockPriceInRupees()/currency3.getcryptoPriceInRupees()+"");
+                holder.buyButton.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
-                        if(parent.getItemAtPosition(position1).toString().equals("Cheems Coin")){
-                            buyPrice = model.getStockPriceInRupees()/currency1.getcryptoPriceInRupees();
-                            buyCurrency = currency1;
-                        }
-                        else if(parent.getItemAtPosition(position1).toString().equals("Surreal Coin")){
-                            buyPrice = model.getStockPriceInRupees()/currency2.getcryptoPriceInRupees();
-                            buyCurrency = currency2;
-                        }
-                        else if(parent.getItemAtPosition(position1).toString().equals("Pepe Coin")){
-                            buyPrice = model.getStockPriceInRupees()/currency3.getcryptoPriceInRupees();
-                            buyCurrency = currency3;
-                        }
-                       db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                           @Override
-                           public void onSuccess(DocumentSnapshot documentSnapshot) {
-                               User user = documentSnapshot.toObject(User.class);
-                               if(!holder.buyQuantity.getText().toString().equals("")) {
-                                   int temp2 = user.noOfStocksOwned.get(position);
-                                   boolean successful = false;
-                                   if (buyCurrency == currency1) {
-                                       double temp = user.currencyOwned.get(0) - (buyPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())));
-                                       if(temp>0) {
-                                           user.currencyOwned.set(0, temp);
-                                           successful = true;
-                                       }
-                                   }
-                                   if (buyCurrency == currency2) {
-                                       double temp = user.currencyOwned.get(1) - (buyPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())));
-                                       if(temp > 0) {
-                                           user.currencyOwned.set(1, temp);
-                                           successful = true;
-                                       }
-                                   }
-                                   if (buyCurrency == currency3) {
-                                       double temp = user.currencyOwned.get(2) - (buyPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())));
-                                       if(temp>0){
-                                           user.currencyOwned.set(2, temp);
-                                           successful = true;
-                                       }
-                                   }
-                                   if(successful == true){
-                                   user.noOfStocksOwned.set(position, temp2 + Integer.parseInt(holder.buyQuantity.getText().toString()));
-
-                                   holder.buyButton.setOnClickListener(new View.OnClickListener() {
-                                       @Override
-                                       public void onClick(View v) {
-                                           holder.buySpinner.setSelection(0);
-                                           AlertDialog alertDialog = new AlertDialog.Builder(context)
-                                                   .setTitle("Confirmation")
-                                                   .setMessage("Are you sure you want to buy these stocks using "+buyPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())))
-                                                   .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                                       @Override
-                                                       public void onClick(DialogInterface dialog, int which) {
-                                                           db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
-                                                           Toast.makeText(context, "Transaction Successful", Toast.LENGTH_LONG).show();
-                                                           holder.buyQuantity.setText("");
-                                                       }
-                                                   })
-                                                   .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                                                       @Override
-                                                       public void onClick(DialogInterface dialog, int which) {
-                                                           Toast.makeText(context, "Transaction Cancelled", Toast.LENGTH_LONG).show();
-                                                       }
-                                                   })
-                                                   .show();
-                                       }
-                                   });}
-                                   else {
-                                       holder.buySpinner.setSelection(0);
-                                       Toast.makeText(context, "You don't have enough " + buyCurrency.getcryptoName() + "s", Toast.LENGTH_LONG).show();
-                                   }
-                               }
-                           }
-                       });
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
+                    public void onClick(View v) {
+                        double buyPrice;
+                        Currency buyCurrency;
+                        buyPrice = model.getStockPriceInRupees()/currency1.getcryptoPriceInRupees();
+                        buyCurrency = currency1;
+                        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                User user = documentSnapshot.toObject(User.class);
+                                if(!holder.buyQuantity.getText().toString().equals("")) {
+                                    int temp2 = user.noOfStocksOwned.get(position);
+                                    boolean successful = false;
+                                    if (buyCurrency == currency1) {
+                                        double temp = user.currencyOwned.get(0) - (buyPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())));
+                                        if(temp>0) {
+                                            user.currencyOwned.set(0, temp);
+                                            successful = true;
+                                        }
+                                    }
+                                    if(successful == true){
+                                        user.noOfStocksOwned.set(position, temp2 + Integer.parseInt(holder.buyQuantity.getText().toString()));
+                                        AlertDialog alertDialog = new AlertDialog.Builder(context)
+                                                .setTitle("Confirmation")
+                                                .setMessage("Are you sure you want to buy these stocks using "+buyPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())))
+                                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
+                                                        Toast.makeText(context, "Transaction Successful", Toast.LENGTH_LONG).show();
+                                                        holder.buyQuantity.setText("");
+                                                    }
+                                                })
+                                                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        Toast.makeText(context, "Transaction Cancelled", Toast.LENGTH_LONG).show();
+                                                    }
+                                                })
+                                                .show();
+                                    }
+                                    else {
+                                        Toast.makeText(context, "You don't have enough " + buyCurrency.getcryptoName() + "s", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            }
+                        });
                     }
                 });
 
-                holder.sellSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    double sellPrice;
-                    Currency sellCurrency;
+//                holder.buySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                    double buyPrice;
+//                    Currency buyCurrency;
+//                    @Override
+//                    public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
+//
+//                            buyPrice = model.getStockPriceInRupees()/currency1.getcryptoPriceInRupees();
+//                            buyCurrency = currency1;
+//
+////                        else if(parent.getItemAtPosition(position1).toString().equals("Surreal Coin")){
+////                            buyPrice = model.getStockPriceInRupees()/currency2.getcryptoPriceInRupees();
+////                            buyCurrency = currency2;
+////                        }
+////                        else if(parent.getItemAtPosition(position1).toString().equals("Pepe Coin")){
+////                            buyPrice = model.getStockPriceInRupees()/currency3.getcryptoPriceInRupees();
+////                            buyCurrency = currency3;
+////                        }
+//                       db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                           @Override
+//                           public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                               User user = documentSnapshot.toObject(User.class);
+//                               if(!holder.buyQuantity.getText().toString().equals("")) {
+//                                   int temp2 = user.noOfStocksOwned.get(position);
+//                                   boolean successful = false;
+//                                   if (buyCurrency == currency1) {
+//                                       double temp = user.currencyOwned.get(0) - (buyPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())));
+//                                       if(temp>0) {
+//                                           user.currencyOwned.set(0, temp);
+//                                           successful = true;
+//                                       }
+//                                   }
+////                                   if (buyCurrency == currency2) {
+////                                       double temp = user.currencyOwned.get(1) - (buyPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())));
+////                                       if(temp > 0) {
+////                                           user.currencyOwned.set(1, temp);
+////                                           successful = true;
+////                                       }
+////                                   }
+////                                   if (buyCurrency == currency3) {
+////                                       double temp = user.currencyOwned.get(2) - (buyPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())));
+////                                       if(temp>0){
+////                                           user.currencyOwned.set(2, temp);
+////                                           successful = true;
+////                                       }
+////                                   }
+//                                   if(successful == true){
+//                                   user.noOfStocksOwned.set(position, temp2 + Integer.parseInt(holder.buyQuantity.getText().toString()));
+//
+//                                   holder.buyButton.setOnClickListener(new View.OnClickListener() {
+//                                       @Override
+//                                       public void onClick(View v) {
+//                                           holder.buySpinner.setSelection(0);
+//                                           AlertDialog alertDialog = new AlertDialog.Builder(context)
+//                                                   .setTitle("Confirmation")
+//                                                   .setMessage("Are you sure you want to buy these stocks using "+buyPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())))
+//                                                   .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//                                                       @Override
+//                                                       public void onClick(DialogInterface dialog, int which) {
+//                                                           db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
+//                                                           Toast.makeText(context, "Transaction Successful", Toast.LENGTH_LONG).show();
+//                                                           holder.buyQuantity.setText("");
+//                                                       }
+//                                                   })
+//                                                   .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+//                                                       @Override
+//                                                       public void onClick(DialogInterface dialog, int which) {
+//                                                           Toast.makeText(context, "Transaction Cancelled", Toast.LENGTH_LONG).show();
+//                                                       }
+//                                                   })
+//                                                   .show();
+//                                       }
+//                                   });}
+//                                   else {
+//                                       holder.buySpinner.setSelection(0);
+//                                       Toast.makeText(context, "You don't have enough " + buyCurrency.getcryptoName() + "s", Toast.LENGTH_LONG).show();
+//                                   }
+//                               }
+//                           }
+//                       });
+//                    }
+//
+//                    @Override
+//                    public void onNothingSelected(AdapterView<?> parent) {
+//
+//                    }
+//                });
+                holder.sellButton.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
-                        if(parent.getItemAtPosition(position1).toString().equals("Cheems Coin")){
-                            sellPrice = model.getStockPriceInRupees()/currency1.getcryptoPriceInRupees();
-                            sellCurrency = currency1;
-                        }
-                        else if(parent.getItemAtPosition(position1).toString().equals("Surreal Coin")){
-                            sellPrice = model.getStockPriceInRupees()/currency2.getcryptoPriceInRupees();
-                            sellCurrency = currency2;
-                        }
-                        else if(parent.getItemAtPosition(position1).toString().equals("Pepe Coin")){
-                            sellPrice = model.getStockPriceInRupees()/currency3.getcryptoPriceInRupees();
-                            sellCurrency = currency3;
-                        }
+                    public void onClick(View v) {
+                        double sellPrice;
+                        Currency sellCurrency;
+                        sellPrice = model.getStockPriceInRupees()/currency1.getcryptoPriceInRupees();
+                        sellCurrency = currency1;
+
                         db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                             @Override
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -165,58 +206,94 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                         if(successful)
                                             user.currencyOwned.set(0, temp);
                                     }
-                                    if (sellCurrency == currency2) {
-                                        double temp = user.currencyOwned.get(1) + (sellPrice * (Integer.parseInt(holder.sellQuantity.getText().toString())));
-                                        if(successful)
-                                            user.currencyOwned.set(1, temp);
-                                    }
-                                    if (sellCurrency == currency3) {
-                                        double temp = user.currencyOwned.get(2) + (sellPrice * (Integer.parseInt(holder.sellQuantity.getText().toString())));
-                                        if(successful)
-                                            user.currencyOwned.set(2, temp);
-                                    }
 
                                     if(successful){
-                                    user.noOfStocksOwned.set(position, temp2 - Integer.parseInt(holder.sellQuantity.getText().toString()));
-
-                                    holder.sellButton.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            holder.sellSpinner.setSelection(0);
-                                            AlertDialog alertDialog = new AlertDialog.Builder(context)
-                                                    .setTitle("Confirmation")
-                                                    .setMessage("Are you sure you want to sell these stocks for "+ sellPrice * (Integer.parseInt(holder.sellQuantity.getText().toString())))
-                                                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog, int which) {
-                                                            db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
-                                                            Toast.makeText(context, "Transaction Successful", Toast.LENGTH_LONG).show();
-                                                            holder.sellQuantity.setText("");
-                                                        }
-                                                    })
-                                                    .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog, int which) {
-                                                            Toast.makeText(context, "Transaction Cancelled", Toast.LENGTH_LONG).show();
-                                                        }
-                                                    })
-                                                    .show();
-                                        }
-                                    });}
+                                        user.noOfStocksOwned.set(position, temp2 - Integer.parseInt(holder.sellQuantity.getText().toString()));
+                                        AlertDialog alertDialog = new AlertDialog.Builder(context)
+                                                .setTitle("Confirmation")
+                                                .setMessage("Are you sure you want to sell these stocks for "+ sellPrice * (Integer.parseInt(holder.sellQuantity.getText().toString())))
+                                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
+                                                        Toast.makeText(context, "Transaction Successful", Toast.LENGTH_LONG).show();
+                                                        holder.sellQuantity.setText("");
+                                                    }
+                                                })
+                                                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        Toast.makeText(context, "Transaction Cancelled", Toast.LENGTH_LONG).show();
+                                                    }
+                                                })
+                                                .show();
+                                    }
                                     else {
-                                        holder.sellSpinner.setSelection(0);
                                         Toast.makeText(context, "You dont have enough " + model.getStockName() , Toast.LENGTH_LONG).show();
                                     }
                                 }
                             }
                         });
                     }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
                 });
+//                holder.sellSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                    double sellPrice;
+//                    Currency sellCurrency;
+//                    @Override
+//                    public void onItemSelected(AdapterView<?> parent, View view, int position1, long id) {
+//
+//                            sellPrice = model.getStockPriceInRupees()/currency1.getcryptoPriceInRupees();
+//                            sellCurrency = currency1;
+//
+//                        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                            @Override
+//                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                                User user = documentSnapshot.toObject(User.class);
+//                                if(!holder.sellQuantity.getText().toString().equals("")) {
+//                                    int temp2 = user.noOfStocksOwned.get(position);
+//                                    boolean successful = temp2>=Integer.parseInt(holder.sellQuantity.getText().toString());
+//                                    if (sellCurrency == currency1) {
+//                                        double temp = user.currencyOwned.get(0) + (sellPrice * (Integer.parseInt(holder.sellQuantity.getText().toString())));
+//                                        if(successful)
+//                                            user.currencyOwned.set(0, temp);
+//                                    }
+//
+//                                    if(successful){
+//                                    user.noOfStocksOwned.set(position, temp2 - Integer.parseInt(holder.sellQuantity.getText().toString()));
+//                                        holder.sellSpinner.setSelection(0);
+//                                        AlertDialog alertDialog = new AlertDialog.Builder(context)
+//                                                .setTitle("Confirmation")
+//                                                .setMessage("Are you sure you want to sell these stocks for "+ sellPrice * (Integer.parseInt(holder.sellQuantity.getText().toString())))
+//                                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//                                                    @Override
+//                                                    public void onClick(DialogInterface dialog, int which) {
+//                                                        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
+//                                                        Toast.makeText(context, "Transaction Successful", Toast.LENGTH_LONG).show();
+//                                                        holder.sellQuantity.setText("");
+//                                                    }
+//                                                })
+//                                                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+//                                                    @Override
+//                                                    public void onClick(DialogInterface dialog, int which) {
+//                                                        Toast.makeText(context, "Transaction Cancelled", Toast.LENGTH_LONG).show();
+//                                                    }
+//                                                })
+//                                                .show();
+//                                    }
+//                                    else {
+//                                        holder.sellSpinner.setSelection(0);
+//                                        Toast.makeText(context, "You dont have enough " + model.getStockName() , Toast.LENGTH_LONG).show();
+//                                    }
+//                                }
+//                            }
+//                        });
+//                    }
+
+//                    @Override
+//                    public void onNothingSelected(AdapterView<?> parent) {
+//
+//                    }
+//                });
             }
         });
     }
@@ -237,8 +314,8 @@ class StockViewHolder extends RecyclerView.ViewHolder {
     TextView priceCrypto1;
     TextView priceCrypto2;
     TextView priceCrypto3;
-    Spinner buySpinner;
-    Spinner sellSpinner;
+//    Spinner buySpinner;
+//    Spinner sellSpinner;
     EditText buyQuantity;
     EditText sellQuantity;
     public StockViewHolder(View itemView) {
@@ -249,8 +326,8 @@ class StockViewHolder extends RecyclerView.ViewHolder {
         priceCrypto1=itemView.findViewById(R.id.TV_stock_price_crypto1_value);
         priceCrypto2=itemView.findViewById(R.id.TV_stock_price_crypto2_value);
         priceCrypto3=itemView.findViewById(R.id.TV_stock_price_crypto3_value);
-        buySpinner=itemView.findViewById(R.id.Spin_buy);
-        sellSpinner=itemView.findViewById(R.id.Spin_sell);
+//        buySpinner=itemView.findViewById(R.id.Spin_buy);
+//        sellSpinner=itemView.findViewById(R.id.Spin_sell);
         buyQuantity=itemView.findViewById(R.id.ET_Buy);
         sellQuantity=itemView.findViewById(R.id.ET_Sell);
     }
