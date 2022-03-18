@@ -14,16 +14,22 @@
         <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/activity_on_boarding.xml" value="0.1" />
         <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/activity_selector.xml" value="0.264" />
         <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
+        <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/activity_sponsors.xml" value="0.2421875" />
         <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/activity_waiting.xml" value="0.152" />
         <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/activity_waiting2.xml" value="0.2421875" />
         <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/content_on_boarding.xml" value="0.2421875" />
-        <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/crypto_layout.xml" value="0.536" />
+        <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/crypto_layout.xml" value="0.264" />
+        <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/fragment_first.xml" value="0.2421875" />
+        <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/fragment_leaderboard.xml" value="0.2421875" />
         <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/fragment_news.xml" value="0.2421875" />
         <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/fragment_portfolio.xml" value="0.264" />
+        <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/fragment_powercards.xml" value="0.2421875" />
         <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/fragment_second.xml" value="0.17407407407407408" />
-        <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/fragment_trading.xml" value="0.360744763382467" />
+        <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/fragment_trading.xml" value="0.4" />
+        <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/news_itemview.xml" value="0.2421875" />
+        <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/slider_layout.xml" value="0.2421875" />
         <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/stock_layout.xml" value="0.264" />
-        <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/trading_layout_item.xml" value="0.6" />
+        <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/trading_layout_item.xml" value="0.4" />
         <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/layout/users_holder.xml" value="0.176" />
         <entry key="..\:/Users/rupin/AndroidStudioProjects/Virtual-Stock-Market-22/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
       </map>

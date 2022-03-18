@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:background="@drawable/trading_stock">
 
 
     <TextView
-        android:inputType="number"
-
         android:id="@+id/TV_stock_name"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/questrial"
+        android:inputType="number"
         android:text="Stock Price"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -35,8 +34,8 @@
         android:layout_marginStart="8dp"
         android:fontFamily="@font/questrial"
         android:text="100"
-        android:textSize="18sp"
         android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/textView3" />
@@ -57,7 +56,7 @@
         app:layout_constraintBottom_toTopOf="@+id/BT_sell"
         app:layout_constraintEnd_toStartOf="@+id/ET_Buy"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TV_stock_price_crypto1_value"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:layout_constraintVertical_bias="0.52" />
 
 
@@ -129,7 +128,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/ET_Sell"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ET_Sell"
-        app:layout_constraintTop_toTopOf="@+id/ET_Sell"/>
+        app:layout_constraintTop_toTopOf="@+id/ET_Sell" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -139,16 +138,17 @@
         app:layout_constraintBottom_toBottomOf="@+id/ET_Buy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ET_Buy"
-        app:layout_constraintTop_toTopOf="@+id/ET_Buy"/>
+        app:layout_constraintTop_toTopOf="@+id/ET_Buy" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:text="Price:"
-        android:textSize="18sp"
         android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TV_stock_name" />
 
