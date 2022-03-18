@@ -3,6 +3,7 @@ package com.example.vsm22;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +26,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -55,19 +58,28 @@ private TradingAdapterRV adapter;
         TextView crypto1 = view.findViewById(R.id.textView);
         TextView crypto2 = view.findViewById(R.id.textView2);
         TextView crypto3 = view.findViewById(R.id.textView3);
-        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                                                                                                            @Override
-                                                                                                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                                                                                                                User user = documentSnapshot.toObject(User.class);
-                                                                                                                                crypto1.setText(user.currencyOwned.get(0)+"");
-                                                                                                                                crypto2.setText(user.currencyOwned.get(1)+"");
-                                                                                                                                crypto3.setText(user.currencyOwned.get(2)+"");
-                                                                                                                            }
-                                                                                                                        }
-        ).addOnFailureListener(new OnFailureListener() {
+//        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                                                                                                                            @Override
+//                                                                                                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                                                                                                                                User user = documentSnapshot.toObject(User.class);
+//                                                                                                                                crypto1.setText(user.currencyOwned.get(0)+"");
+//                                                                                                                                crypto2.setText(user.currencyOwned.get(1)+"");
+//                                                                                                                                crypto3.setText(user.currencyOwned.get(2)+"");
+//                                                                                                                            }
+//                                                                                                                        }
+//        ).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//
+//            }
+//        });
+        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
-            public void onFailure(@NonNull Exception e) {
-
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                User user = value.toObject(User.class);
+                crypto1.setText(String.format("%.2f",user.currencyOwned.get(0)));
+                crypto2.setText(String.format("%.2f",user.currencyOwned.get(1)));
+                crypto3.setText(String.format("%.2f",user.currencyOwned.get(2)));
             }
         });
         recyclerView=(RecyclerView)view.findViewById(R.id.RV_trading);
