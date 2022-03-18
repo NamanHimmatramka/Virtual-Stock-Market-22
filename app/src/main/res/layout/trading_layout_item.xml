@@ -122,18 +122,19 @@
 
     <EditText
         android:id="@+id/ET_Buy"
-        android:textColor="@color/black"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/input_field"
         android:fontFamily="@font/questrial"
         android:hint="Quantity"
+        android:inputType="number"
+        android:textColor="@color/black"
         android:textColorHint="#777676"
         android:textSize="18dp"
-        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/BT_Buy"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
         app:layout_constraintStart_toEndOf="@+id/BT_Buy"
         app:layout_constraintTop_toTopOf="@+id/BT_Buy"
         app:layout_constraintVertical_bias="0.476" />
@@ -163,21 +164,23 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/input_field"
         android:ems="10"
-        android:textColor="@color/black"
         android:fontFamily="@font/questrial"
         android:hint="Quantity"
         android:inputType="number"
+        android:textColor="@color/black"
         android:textColorHint="#777676"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/BT_sell"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
         app:layout_constraintStart_toEndOf="@+id/BT_sell"
         app:layout_constraintTop_toTopOf="@+id/BT_sell"
         app:layout_constraintVertical_bias="0.428" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -194,6 +197,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -206,7 +210,7 @@
             android:id="@+id/Spin_buy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/CryptoCurrency"/>
+            android:entries="@array/CryptoCurrency" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

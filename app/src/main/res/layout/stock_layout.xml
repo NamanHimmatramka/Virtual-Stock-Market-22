@@ -33,6 +33,7 @@
         android:layout_marginEnd="5dp"
         android:fontFamily="@font/questrial"
         android:gravity="right"
+        android:text="1000.0"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/TV_stock_number"
