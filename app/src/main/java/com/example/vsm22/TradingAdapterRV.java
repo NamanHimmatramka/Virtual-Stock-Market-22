@@ -159,7 +159,7 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                 User user = documentSnapshot.toObject(User.class);
                                 if(!holder.sellQuantity.getText().toString().equals("")) {
                                     int temp2 = user.noOfStocksOwned.get(position);
-                                    boolean successful = temp2>Integer.parseInt(holder.sellQuantity.getText().toString());
+                                    boolean successful = temp2>=Integer.parseInt(holder.sellQuantity.getText().toString());
                                     if (sellCurrency == currency1) {
                                         double temp = user.currencyOwned.get(0) + (sellPrice * (Integer.parseInt(holder.sellQuantity.getText().toString())));
                                         if(successful)
@@ -205,7 +205,7 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                     });}
                                     else {
                                         holder.sellSpinner.setSelection(0);
-                                        Toast.makeText(context, "You dont have enough " + model.getStockName() + "s", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(context, "You dont have enough " + model.getStockName() , Toast.LENGTH_LONG).show();
                                     }
                                 }
                             }
