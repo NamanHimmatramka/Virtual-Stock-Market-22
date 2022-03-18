@@ -19,6 +19,8 @@ public class User {
         this.uid=uid;
         this.userName=userName;
         this.insiderTrading=1;
+        this.loanACap=1;
+        this.loanBaseAmount=0;
         for(int i=0; i<6; i++){
             noOfStocksOwned.add((i+1)*10);
         }
