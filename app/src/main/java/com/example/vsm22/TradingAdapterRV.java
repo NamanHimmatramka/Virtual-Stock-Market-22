@@ -324,8 +324,8 @@ class StockViewHolder extends RecyclerView.ViewHolder {
         buyButton=itemView.findViewById(R.id.BT_Buy);
         sellButton=itemView.findViewById(R.id.BT_sell);
         priceCrypto1=itemView.findViewById(R.id.TV_stock_price_crypto1_value);
-        priceCrypto2=itemView.findViewById(R.id.TV_stock_price_crypto2_value);
-        priceCrypto3=itemView.findViewById(R.id.TV_stock_price_crypto3_value);
+//        priceCrypto2=itemView.findViewById(R.id.TV_stock_price_crypto2_value);
+//        priceCrypto3=itemView.findViewById(R.id.TV_stock_price_crypto3_value);
 //        buySpinner=itemView.findViewById(R.id.Spin_buy);
 //        sellSpinner=itemView.findViewById(R.id.Spin_sell);
         buyQuantity=itemView.findViewById(R.id.ET_Buy);

@@ -81,17 +81,16 @@ this.roundN=roundNo;
     }
 
     private class CryptoViewHolder extends RecyclerView.ViewHolder {
-        private TextView cryptoName,cryptoPriceInRupees,cryptoNetWorth, cryptoOwned;
+        private TextView cryptoName, cryptoOwned;
         private ConstraintLayout constraintLayout;
-        private ImageView cyptoImage;
         public CryptoViewHolder(View itemView) {
             super(itemView);
             cryptoName=itemView.findViewById(R.id.TV_crypto_name);
-            cryptoPriceInRupees=itemView.findViewById(R.id.TV_crypto_worth_number);
-            cryptoNetWorth=itemView.findViewById(R.id.TV_crypto_worth_number2);
-            cryptoOwned = itemView.findViewById(R.id.TV_crypto_number);
+//            cryptoPriceInRupees=itemView.findViewById(R.id.TV_crypto_worth_number);
+//            cryptoNetWorth=itemView.findViewById(R.id.TV_crypto_worth_number2);
+            cryptoOwned = itemView.findViewById(R.id.TV_crypto_worth_number);
             constraintLayout=itemView.findViewById(R.id.CV_cryptoItem);
-            cyptoImage=itemView.findViewById(R.id.IV_crypto);
+//            cyptoImage=itemView.findViewById(R.id.IV_crypto);
         }}
 
     void RecyclerViewStock(View view){
@@ -196,7 +195,6 @@ this.roundN=roundNo;
                 holder.cryptoName.setText(model.getcryptoName());
                 double s= model.getcryptoPriceInRupees();
 
-                holder.cryptoPriceInRupees.setText(String.format("%.2f",s));
                 firebaseFirestore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -205,18 +203,9 @@ this.roundN=roundNo;
                             holder.cryptoOwned.setText(user.currencyOwned.get(position)+"");
                            // holder.cryptoNetWorth.setText(user.currencyOwned.get(position)*model.getcryptoPriceInRupees()+"");
                            double temp=user.currencyOwned.get(position)*model.getcryptoPriceInRupees();
-                            holder.cryptoNetWorth.setText(String.format("%.2f",temp));
                         }
                     }
                 });
-              switch (position){
-                  case 0: holder.cyptoImage.setImageResource(R.drawable.bitcoin);
-                  break;
-                  case 1: holder.cyptoImage.setImageResource(R.drawable.dogecoin);
-                      break;
-                  case 2: holder.cyptoImage.setImageResource(R.drawable.eth);
-                      break;
-              }
                 AnimationDrawable animationDrawable=(AnimationDrawable) holder.constraintLayout.getBackground();
                 animationDrawable.setEnterFadeDuration(1000);
                 animationDrawable.setExitFadeDuration(2000);
