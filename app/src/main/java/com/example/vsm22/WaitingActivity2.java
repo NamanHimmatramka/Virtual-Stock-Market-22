@@ -10,8 +10,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.vsm22.models.Important;
+import com.example.vsm22.models.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -23,6 +25,24 @@ private FirebaseFirestore db;
         super.onCreate(savedInstanceState);
         db=FirebaseFirestore.getInstance();
         setContentView(R.layout.activity_waiting2);
+        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                User user = documentSnapshot.toObject(User.class);
+                if(user.loanACap == 2){
+                    double old = user.currencyOwned.get(0);
+                    double newValue = old - 0.5*user.loanBaseAmount;
+                    user.currencyOwned.set(0, newValue);
+                    user.loanACap=0;
+                    db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
         leaderBoard=findViewById(R.id.Btn_showLeaderboard);
         leaderBoard.setOnClickListener(new View.OnClickListener() {
             @Override

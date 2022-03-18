@@ -25,15 +25,16 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class PowercardsFragment extends Fragment {
 ImageView loanIV,insiderIV;
 TextView insiderTV;
-Boolean check_loan=true;
 CardView insiderCV,loanCV;
 FirebaseFirestore db;
 int[] insiderTradingThisRound;
+int[] loanACapThisRound;
 int roundNo;
-    public PowercardsFragment(int roundNo, int[] insiderTradingThisRound) {
+    public PowercardsFragment(int roundNo, int[] insiderTradingThisRound, int[] loanACapThisRound) {
         // Required empty public constructor
         this.roundNo=roundNo;
         this.insiderTradingThisRound = insiderTradingThisRound;
+        this.loanACapThisRound = loanACapThisRound;
     }
 
     @Override
@@ -85,19 +86,59 @@ int roundNo;
                 loanFunction(view);
             }
         });
-
+        if(loanACapThisRound[0] == 1) {
+            loanIV.setAlpha((float) 0.3);
+        }
         return view;
     }
 
     private void loanFunction(View view) {
 
-        if(check_loan==true){
-            check_loan=false;
-            loanIV.setAlpha((float) 0.3);
-        }
-        else{
-            Toast.makeText(view.getContext(),"Insider Trading already used",Toast.LENGTH_SHORT).show();
-        }
+        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                User user = documentSnapshot.toObject(User.class);
+                if(user.loanACap!=1){
+                    Toast.makeText(view.getContext(),"Loan-A-Cap already used",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    AlertDialog alertDialog = new AlertDialog.Builder(view.getContext())
+                            .setTitle("Confirmation")
+                            .setMessage("Are you sure you want to use Loan-A-Cap")
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    loanACapThisRound[0] = 1;
+                                    loanIV.setAlpha((float) 0.3);
+                                    double old = user.currencyOwned.get(0);
+                                    double newValue = old + 0.4*old;
+                                    user.loanBaseAmount=old;
+                                    user.currencyOwned.set(0,newValue);
+                                    user.loanACap = 2;
+                                    Toast.makeText(view.getContext(), "You got a loan of "+(newValue-old), Toast.LENGTH_LONG).show();
+                                    db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
+                                }
+                            }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Toast.makeText(view.getContext(), "Powercard not used", Toast.LENGTH_LONG).show();
+                                }
+                            }).show();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+//        if(check_loan==true){
+//            check_loan=false;
+//            loanIV.setAlpha((float) 0.3);
+//        }
+//        else{
+//            Toast.makeText(view.getContext(),"Insider Trading already used",Toast.LENGTH_SHORT).show();
+//        }
 
     }
 

@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     int roundNo;
     FirebaseFirestore db;
     int[] insiderTradingThisRound;
+    int[] loanACapThisRound;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         roundNo = getIntent().getExtras().getInt("roundNo");
         db = FirebaseFirestore.getInstance();
         insiderTradingThisRound = new int[1];
+        loanACapThisRound = new int[1];
 
         getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new PortfolioFragment(roundNo)).commit();
 
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.tradingCenter: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new TradingFragment()).commit();
                     return true;
 
-                    case R.id.powercards: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new PowercardsFragment(roundNo, insiderTradingThisRound)).commit();
+                    case R.id.powercards: getSupportFragmentManager().beginTransaction().replace(R.id.FL_main, new PowercardsFragment(roundNo, insiderTradingThisRound, loanACapThisRound)).commit();
                     return true;
 
                 }

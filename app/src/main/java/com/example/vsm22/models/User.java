@@ -8,6 +8,8 @@ public class User {
     public String uid;
     public String status;
     public int insiderTrading;
+    public int loanACap;
+    public double loanBaseAmount;
     public double netWorth;
     public List<Integer> noOfStocksOwned = new ArrayList<>();
     public List<Double> currencyOwned = new ArrayList<>();
