@@ -21,6 +21,7 @@ import com.example.vsm22.models.Stock;
 import com.example.vsm22.models.User;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -39,6 +40,18 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
     @Override
     protected void onBindViewHolder(@NonNull StockViewHolder holder, int position, @NonNull Stock model) {
         holder.stockName.setText(model.getStockName());
+        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                   User user=documentSnapshot.toObject(User.class);
+                   holder.owned.setText(user.noOfStocksOwned.get(position)+"");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
         db.collection("crypto").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -308,7 +321,7 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
 }
 
 class StockViewHolder extends RecyclerView.ViewHolder {
-    TextView stockName;
+    TextView stockName,owned;
     Button buyButton;
     Button sellButton;
     TextView priceCrypto1;
@@ -320,6 +333,7 @@ class StockViewHolder extends RecyclerView.ViewHolder {
     EditText sellQuantity;
     public StockViewHolder(View itemView) {
         super(itemView);
+        owned=itemView.findViewById(R.id.TV_trade_owned);
         stockName=itemView.findViewById(R.id.TV_stock_name);
         buyButton=itemView.findViewById(R.id.BT_Buy);
         sellButton=itemView.findViewById(R.id.BT_sell);
