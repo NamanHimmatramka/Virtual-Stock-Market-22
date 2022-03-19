@@ -22,10 +22,10 @@ public class User {
         this.loanACap=1;
         this.loanBaseAmount=0;
         for(int i=0; i<6; i++){
-            noOfStocksOwned.add((i+1)*10);
+            noOfStocksOwned.add(0);
         }
         for(int i=0; i<1; i++){
-            currencyOwned.add((i+1)*10.00);
+            currencyOwned.add(100000.00);
         }
     }
 }
