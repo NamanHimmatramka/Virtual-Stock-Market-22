@@ -36,7 +36,7 @@ public class SplashScreen extends AppCompatActivity {
         splashImg.animate().translationY(-1800).setDuration(4000).setStartDelay(5000);
         logo.animate().translationY(2200).setDuration(4000).setStartDelay(5000);
         appName.animate().translationY(2200).setDuration(4000).setStartDelay(5000);
-        lottieAnimationView.animate().translationX(1600).setDuration(4000).setStartDelay(6000);
+        lottieAnimationView.animate().translationX(1600).setDuration(4000).setStartDelay(4000);
 
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -46,7 +46,7 @@ public class SplashScreen extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 10000);
+        }, 7500);
 
     }
 }

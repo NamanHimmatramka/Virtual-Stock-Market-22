@@ -30,6 +30,9 @@ FirebaseFirestore db;
 int[] insiderTradingThisRound;
 int[] loanACapThisRound;
 int roundNo;
+public PowercardsFragment(){
+
+}
     public PowercardsFragment(int roundNo, int[] insiderTradingThisRound, int[] loanACapThisRound) {
         // Required empty public constructor
         this.roundNo=roundNo;

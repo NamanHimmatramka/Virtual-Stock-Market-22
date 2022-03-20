@@ -33,6 +33,9 @@ public class NewsFragment extends Fragment {
     NewsAdapterRV adapter;
     int roundNo;
     FirebaseFirestore db;
+    public NewsFragment(){
+
+    }
     public NewsFragment(int roundNo) {
         this.roundNo = roundNo;
     }

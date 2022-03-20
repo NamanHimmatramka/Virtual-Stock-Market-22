@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="50dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerInParent="true"
     android:weightSum="100"
     android:animateLayoutChanges="true"
     android:layout_gravity="center_vertical"
-    android:background="#403F3F"
+    android:background="@color/fui_transparent"
     android:orientation="vertical">
 
     <LinearLayout
@@ -55,7 +56,7 @@
                     android:layout_height="250dp"
                     android:layout_margin="5dp"
                     android:id="@+id/CV_insider"
-                    app:cardCornerRadius="30dp"
+                    android:background="@drawable/insider_trade"
                     app:cardBackgroundColor="@color/black">
 
                     <TextView
@@ -72,18 +73,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="insider news" />
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-                    <ImageView
-                        android:id="@+id/IV_insider"
-                        android:layout_width="wrap_content"
-                        android:layout_height="250dp"
-                        android:layout_gravity="center"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/insider_trade"
-                        android:text="powercard2"
-                        tools:alpha="0.4"
-                        android:visibility="visible"
-                        tools:visibility="visible" />
+    <ImageView
+        android:id="@+id/IV_insider"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:src="@drawable/insider_trade"
+        android:text="powercard2"
+        android:visibility="visible"
+        tools:alpha="0.4"
+        tools:visibility="visible" />
+</RelativeLayout>
+
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
         </RelativeLayout>
@@ -128,16 +134,19 @@
                     android:layout_height="250dp"
                     android:layout_margin="5dp"
                     android:id="@+id/CV_LOAN"
-                    app:cardCornerRadius="30dp"
                     app:cardBackgroundColor="@color/black">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-                    <ImageView
-                        android:id="@+id/IV_loan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="268dp"
-                        android:layout_gravity="center"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/loaning" />
+    <ImageView
+        android:id="@+id/IV_loan"
+        android:layout_width="wrap_content"
+        android:layout_height="268dp"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:src="@drawable/loaning" />
+</RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
