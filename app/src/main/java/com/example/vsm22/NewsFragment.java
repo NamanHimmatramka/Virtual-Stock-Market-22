@@ -74,6 +74,7 @@ public class NewsFragment extends Fragment {
                         newslist.add(new News(getText(R.string.News_2_1).toString(),2));
                         newslist.add(new News(getText(R.string.News_2_2).toString(),2));
                         newslist.add(new News(getText(R.string.News_2_3).toString(),2));
+                        newslist.add(new News(getText(R.string.News_2_4).toString(),2));
                         newslist.add(new News(getText(R.string.News_1_1).toString(),1));
                         newslist.add(new News(getText(R.string.News_1_2).toString(),1));
                         newslist.add(new News(getText(R.string.News_1_3).toString(),1));
@@ -88,6 +89,7 @@ public class NewsFragment extends Fragment {
                         newslist.add(new News(getText(R.string.News_2_1).toString(),2));
                         newslist.add(new News(getText(R.string.News_2_2).toString(),2));
                         newslist.add(new News(getText(R.string.News_2_3).toString(),2));
+                        newslist.add(new News(getText(R.string.News_2_4).toString(),2));
                         newslist.add(new News(getText(R.string.News_1_1).toString(),1));
                         newslist.add(new News(getText(R.string.News_1_2).toString(),1));
                         newslist.add(new News(getText(R.string.News_1_3).toString(),1));
@@ -107,6 +109,7 @@ public class NewsFragment extends Fragment {
                         newslist.add(new News(getText(R.string.News_2_1).toString(),2));
                         newslist.add(new News(getText(R.string.News_2_2).toString(),2));
                         newslist.add(new News(getText(R.string.News_2_3).toString(),2));
+                        newslist.add(new News(getText(R.string.News_2_4).toString(),2));
                         newslist.add(new News(getText(R.string.News_1_1).toString(),1));
                         newslist.add(new News(getText(R.string.News_1_2).toString(),1));
                         newslist.add(new News(getText(R.string.News_1_3).toString(),1));
@@ -130,6 +133,7 @@ public class NewsFragment extends Fragment {
                         newslist.add(new News(getText(R.string.News_2_1).toString(),2));
                         newslist.add(new News(getText(R.string.News_2_2).toString(),2));
                         newslist.add(new News(getText(R.string.News_2_3).toString(),2));
+                        newslist.add(new News(getText(R.string.News_2_4).toString(),2));
                         newslist.add(new News(getText(R.string.News_1_1).toString(),1));
                         newslist.add(new News(getText(R.string.News_1_2).toString(),1));
                         newslist.add(new News(getText(R.string.News_1_3).toString(),1));
