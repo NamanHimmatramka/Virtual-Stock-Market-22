@@ -70,4 +70,9 @@ private FirebaseFirestore db;
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }
