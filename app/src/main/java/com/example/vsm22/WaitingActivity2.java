@@ -59,61 +59,6 @@ private FirebaseFirestore db;
                         if(documentSnapshot.exists()){
                             Important important=documentSnapshot.toObject(Important.class);
                             if(important.leaderboard==1){
-                                db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                        if(documentSnapshot.exists()){
-                                            User user = documentSnapshot.toObject(User.class);
-                                            user.status = "waiting";
-                                            db.collection("stocks").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                                @Override
-                                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                                    List<DocumentSnapshot> ds = queryDocumentSnapshots.getDocuments();
-                                                    ArrayList<Double> stockPrices= new ArrayList<>();
-                                                    for(DocumentSnapshot dsi: ds){
-                                                        stockPrices.add(dsi.toObject(Stock.class).getStockPriceInRupees());
-                                                    }
-                                                    db.collection("crypto").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                                        @Override
-                                                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                                            List<DocumentSnapshot> ds = queryDocumentSnapshots.getDocuments();
-                                                            ArrayList<Double> cryptoPrices= new ArrayList<>();
-                                                            for(DocumentSnapshot dsi: ds){
-                                                                cryptoPrices.add(dsi.toObject(Currency.class).getcryptoPriceInRupees());
-                                                            }
-                                                            double netStockWorth = 0;
-                                                            for(int i=0; i<user.noOfStocksOwned.size(); i++){
-                                                                netStockWorth+=user.noOfStocksOwned.get(i)*stockPrices.get(i);
-                                                            }
-                                                            double netCryptoWorth = 0;
-                                                            for(int i=0; i<user.currencyOwned.size(); i++){
-                                                                netCryptoWorth+=user.currencyOwned.get(i)*cryptoPrices.get(i);
-                                                            }
-                                                            user.netWorth = netStockWorth+netCryptoWorth;
-                                                            db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
-                                                            finish();
-                                                        }
-                                                    }).addOnFailureListener(new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
-
-                                                        }
-                                                    });
-                                                }
-                                            }).addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-
-                                                }
-                                            });
-                                        }
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-
-                                    }
-                                });
                                 startActivity(new Intent(getApplicationContext(),WaitingActivity.class));
                             }
                             else{
