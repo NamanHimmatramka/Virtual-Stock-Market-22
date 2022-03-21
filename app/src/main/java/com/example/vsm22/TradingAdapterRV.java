@@ -77,7 +77,7 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                                     boolean successful = false;
                                     if (buyCurrency == currency1) {
                                         double temp = user.currencyOwned.get(0) - (buyPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())));
-                                        if(temp>0) {
+                                        if(temp>=0) {
                                             user.currencyOwned.set(0, temp);
                                             successful = true;
                                         }
