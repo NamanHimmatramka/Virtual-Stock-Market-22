@@ -86,6 +86,9 @@ public class WaitingActivity extends AppCompatActivity {
                                     }
                                 });
                             }
+                            else if(data.nextRound==2){
+                                startActivity(new Intent(WaitingActivity.this, EndActivity.class));
+                            }
                             else
                                 Toast.makeText(WaitingActivity.this, "Wait for the next round to start", Toast.LENGTH_LONG).show();
                         }
