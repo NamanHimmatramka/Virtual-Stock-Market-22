@@ -67,19 +67,19 @@ public PowercardsFragment(){
             insiderTV.setVisibility(View.VISIBLE);
             switch (roundNo) {
                 case 1:
-                    insiderTV.setText("Insider news: " + roundNo);
+                    insiderTV.setText("Major Fuel running vehicle company Toyota was shut down. \n");
                     break;
                 case 2:
-                    insiderTV.setText("Insider news: " + roundNo);
+                    insiderTV.setText("Indian Government caught and burnt down 2 tons of drugs which were caught on the Goa Port. \n");
                     break;
                 case 3:
-                    insiderTV.setText("Insider news: " + roundNo);
+                    insiderTV.setText("Many of Gaitonde’s buildings were found illegal and were sealed by the CBI. \n");
                     break;
                 case 4:
-                    insiderTV.setText("Insider news: " + roundNo);
+                    insiderTV.setText("Jeff Bezos launched his brand new venture called Amazon jewelries. \n");
                     break;
                 case 5:
-                    insiderTV.setText("Insider news: " + roundNo);
+                    insiderTV.setText(" 364 people died in a plane crash which was later found that it happened because of poor maintenance issues.  \n");
                     break;
             }
         }
