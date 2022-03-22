@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.vsm22.models.Important;
 import com.example.vsm22.models.News;
+import com.example.vsm22.models.NewsFB;
 import com.example.vsm22.models.Stock;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -59,90 +60,30 @@ public class NewsFragment extends Fragment {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 Important obj = documentSnapshot.toObject(Important.class);
-                if(obj.day==1){
-                    newslist=new ArrayList<>();
-                    if(roundNo==1){
-                        newslist.clear();
+                db.collection("news").document("round"+roundNo).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        NewsFB news = documentSnapshot.toObject(NewsFB.class);
+                        if(obj.day==1){
+                            newslist=new ArrayList<>();
+                                newslist.clear();
 
-                        newslist.add(new News(getText(R.string.News_1_1).toString(),1));
-                        newslist.add(new News(getText(R.string.News_1_2).toString(),1));
-                        newslist.add(new News(getText(R.string.News_1_3).toString(),1));
-                        newslist.add(new News(getText(R.string.News_1_4).toString(),1));
-                    }
-                    else if(roundNo==2){
-                        newslist.clear();
-                        newslist.add(new News(getText(R.string.News_2_1).toString(),2));
-                        newslist.add(new News(getText(R.string.News_2_2).toString(),2));
-                        newslist.add(new News(getText(R.string.News_2_3).toString(),2));
-                        newslist.add(new News(getText(R.string.News_2_4).toString(),2));
-                        newslist.add(new News(getText(R.string.News_1_1).toString(),1));
-                        newslist.add(new News(getText(R.string.News_1_2).toString(),1));
-                        newslist.add(new News(getText(R.string.News_1_3).toString(),1));
-                        newslist.add(new News(getText(R.string.News_1_4).toString(),1));
-                    }
-                    else if(roundNo==3){
-                        newslist.clear();
-                        newslist.add(new News(getText(R.string.News_3_1).toString(),3));
-                        newslist.add(new News(getText(R.string.News_3_2).toString(),3));
-                        newslist.add(new News(getText(R.string.News_3_3).toString(),3));
-                        newslist.add(new News(getText(R.string.News_3_4).toString(),3));
-                        newslist.add(new News(getText(R.string.News_2_1).toString(),2));
-                        newslist.add(new News(getText(R.string.News_2_2).toString(),2));
-                        newslist.add(new News(getText(R.string.News_2_3).toString(),2));
-                        newslist.add(new News(getText(R.string.News_2_4).toString(),2));
-                        newslist.add(new News(getText(R.string.News_1_1).toString(),1));
-                        newslist.add(new News(getText(R.string.News_1_2).toString(),1));
-                        newslist.add(new News(getText(R.string.News_1_3).toString(),1));
-                        newslist.add(new News(getText(R.string.News_1_4).toString(),1));
-
-                    }
-                    else if(roundNo==4){
-                        newslist.clear();
-                        newslist.add(new News(getText(R.string.News_4_1).toString(),4));
-                        newslist.add(new News(getText(R.string.News_4_2).toString(),4));
-                        newslist.add(new News(getText(R.string.News_4_3).toString(),4));
-                        newslist.add(new News(getText(R.string.News_4_4).toString(),4));
-                        newslist.add(new News(getText(R.string.News_3_1).toString(),3));
-                        newslist.add(new News(getText(R.string.News_3_2).toString(),3));
-                        newslist.add(new News(getText(R.string.News_3_3).toString(),3));
-                        newslist.add(new News(getText(R.string.News_3_4).toString(),3));
-                        newslist.add(new News(getText(R.string.News_2_1).toString(),2));
-                        newslist.add(new News(getText(R.string.News_2_2).toString(),2));
-                        newslist.add(new News(getText(R.string.News_2_3).toString(),2));
-                        newslist.add(new News(getText(R.string.News_2_4).toString(),2));
-                        newslist.add(new News(getText(R.string.News_1_1).toString(),1));
-                        newslist.add(new News(getText(R.string.News_1_2).toString(),1));
-                        newslist.add(new News(getText(R.string.News_1_3).toString(),1));
-                        newslist.add(new News(getText(R.string.News_1_4).toString(),1));
-
-                    }
-                    else if(roundNo==5){
-                        newslist.clear();
-                        newslist.add(new News(getText(R.string.News_5_1).toString(),5));
-                        newslist.add(new News(getText(R.string.News_5_2).toString(),5));
-                        newslist.add(new News(getText(R.string.News_5_3).toString(),5));
-                        newslist.add(new News(getText(R.string.News_5_4).toString(),5));
-                        newslist.add(new News(getText(R.string.News_4_1).toString(),4));
-                        newslist.add(new News(getText(R.string.News_4_2).toString(),4));
-                        newslist.add(new News(getText(R.string.News_4_3).toString(),4));
-                        newslist.add(new News(getText(R.string.News_4_4).toString(),4));
-                        newslist.add(new News(getText(R.string.News_3_1).toString(),3));
-                        newslist.add(new News(getText(R.string.News_3_2).toString(),3));
-                        newslist.add(new News(getText(R.string.News_3_3).toString(),3));
-                        newslist.add(new News(getText(R.string.News_3_4).toString(),3));
-                        newslist.add(new News(getText(R.string.News_2_1).toString(),2));
-                        newslist.add(new News(getText(R.string.News_2_2).toString(),2));
-                        newslist.add(new News(getText(R.string.News_2_3).toString(),2));
-                        newslist.add(new News(getText(R.string.News_2_4).toString(),2));
-                        newslist.add(new News(getText(R.string.News_1_1).toString(),1));
-                        newslist.add(new News(getText(R.string.News_1_2).toString(),1));
-                        newslist.add(new News(getText(R.string.News_1_3).toString(),1));
-                        newslist.add(new News(getText(R.string.News_1_4).toString(),1));
-                    }
+                                newslist.add(new News(news.news1,roundNo));
+                                newslist.add(new News(news.news2,roundNo));
+                                newslist.add(new News(news.news3,roundNo));
+                                newslist.add(new News(news.news4,roundNo));
 
 
-                    recyclerViewNews(view);
-                }
+
+                            recyclerViewNews(view);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
