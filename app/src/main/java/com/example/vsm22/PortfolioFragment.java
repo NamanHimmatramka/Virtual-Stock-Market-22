@@ -1,5 +1,6 @@
 package com.example.vsm22;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -32,14 +33,18 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class PortfolioFragment extends Fragment {
 RecyclerView recyclerView,recyclerView_crypto;
 int roundN;
-private FirebaseFirestore firebaseFirestore,firebaseFirestore2;
+TextView netWorthTotal;
+private FirebaseFirestore db,firebaseFirestore2;
 private FirestoreRecyclerAdapter adapter,adapter_crypto;
     public PortfolioFragment() {
 
@@ -59,8 +64,64 @@ this.roundN=roundNo;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_portfolio, container, false);
+        db = FirebaseFirestore.getInstance();
         RecyclerViewStock(view);
         RecyclerViewCurrency(view);
+        netWorthTotal = view.findViewById(R.id.netWorthTotal);
+        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists()){
+                    User user = documentSnapshot.toObject(User.class);
+                    user.status = "waiting";
+                    db.collection("stocks").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            List<DocumentSnapshot> ds = queryDocumentSnapshots.getDocuments();
+                            ArrayList<Double> stockPrices= new ArrayList<>();
+                            for(DocumentSnapshot dsi: ds){
+                                stockPrices.add(dsi.toObject(Stock.class).getStockPriceInRupees());
+                            }
+                            db.collection("crypto").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                @Override
+                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                    List<DocumentSnapshot> ds = queryDocumentSnapshots.getDocuments();
+                                    ArrayList<Double> cryptoPrices= new ArrayList<>();
+                                    for(DocumentSnapshot dsi: ds){
+                                        cryptoPrices.add(dsi.toObject(Currency.class).getcryptoPriceInRupees());
+                                    }
+                                    double netStockWorth = 0;
+                                    for(int i=0; i<user.noOfStocksOwned.size(); i++){
+                                        netStockWorth+=user.noOfStocksOwned.get(i)*stockPrices.get(i);
+                                    }
+                                    double netCryptoWorth = 0;
+                                    for(int i=0; i<user.currencyOwned.size(); i++){
+                                        netCryptoWorth+=user.currencyOwned.get(i)*cryptoPrices.get(i);
+                                    }
+                                    user.netWorth = netStockWorth+netCryptoWorth;
+                                    netWorthTotal.setText(user.netWorth+"");
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+
+                                }
+                            });
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
         return view;
     }
 
@@ -94,10 +155,9 @@ this.roundN=roundNo;
         }}
 
     void RecyclerViewStock(View view){
-        firebaseFirestore=FirebaseFirestore.getInstance();
         recyclerView=(RecyclerView)view.findViewById(R.id.RV_stocks_owned);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        Query query=firebaseFirestore.collection("stocks");
+        Query query=db.collection("stocks");
         FirestoreRecyclerOptions<Stock> options=new FirestoreRecyclerOptions.Builder<Stock>()
                 .setQuery(query,Stock.class)
                 .build();
@@ -113,7 +173,7 @@ this.roundN=roundNo;
             @Override
             protected void onBindViewHolder( PortfolioFragment.StockViewHolder holder, int position, Stock model) {
                 holder.stockName.setText(model.getStockName());
-                firebaseFirestore.collection("stockHistory").document("Stock"+(position+1)).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                db.collection("stockHistory").document("Stock"+(position+1)).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if(documentSnapshot.exists()){
@@ -161,7 +221,7 @@ this.roundN=roundNo;
                 });
 
 
-                firebaseFirestore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if(documentSnapshot.exists()){
@@ -180,10 +240,9 @@ this.roundN=roundNo;
     }
 
     void RecyclerViewCurrency(View view){
-        firebaseFirestore=FirebaseFirestore.getInstance();
         recyclerView=(RecyclerView)view.findViewById(R.id.RV_wallet);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
-        Query query=firebaseFirestore.collection("crypto");
+        Query query=db.collection("crypto");
         FirestoreRecyclerOptions<Currency> options=new FirestoreRecyclerOptions.Builder<Currency>()
                 .setQuery(query,Currency.class)
                 .build();
@@ -195,7 +254,7 @@ this.roundN=roundNo;
                 holder.cryptoName.setText(model.getcryptoName());
                 double s= model.getcryptoPriceInRupees();
 
-                firebaseFirestore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if(documentSnapshot.exists()){

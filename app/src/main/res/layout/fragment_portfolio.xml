@@ -103,7 +103,7 @@
             android:background="@drawable/recyclerview_background"
             android:paddingTop="60dp"
             android:layout_marginBottom="4dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintBottom_toTopOf="@+id/netWorthTotal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -367,7 +367,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView11" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/netWorthTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -386,9 +386,9 @@
             android:textColor="@color/white"
             android:text="Net worth"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView6"
-            app:layout_constraintEnd_toStartOf="@+id/textView6"
-            app:layout_constraintTop_toTopOf="@+id/textView6" />
+            app:layout_constraintBottom_toBottomOf="@+id/netWorthTotal"
+            app:layout_constraintEnd_toStartOf="@+id/netWorthTotal"
+            app:layout_constraintTop_toTopOf="@+id/netWorthTotal" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
