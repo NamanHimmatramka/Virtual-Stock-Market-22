@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.vsm22">
+    package="com.oculus.vsm">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,23 +12,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VSM22">
-        <activity android:name=".EndActivity"></activity>
+        <activity android:name="com.oculus.vsm.EndActivity"></activity>
         <activity
-            android:name=".WaitingActivity2"
+            android:name="com.oculus.vsm.WaitingActivity2"
             android:exported="false" />
-        <activity android:name=".OnBoardingActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name="com.oculus.vsm.OnBoardingActivity" />
+        <activity android:name="com.oculus.vsm.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WaitingActivity" />
-        <activity android:name=".SponsorsActivity" />
-        <activity android:name=".SelectorActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name="com.oculus.vsm.WaitingActivity" />
+        <activity android:name="com.oculus.vsm.SponsorsActivity" />
+        <activity android:name="com.oculus.vsm.SelectorActivity" />
+        <activity android:name="com.oculus.vsm.LoginActivity" />
+        <activity android:name="com.oculus.vsm.MainActivity" />
     </application>
 
 </manifest>
