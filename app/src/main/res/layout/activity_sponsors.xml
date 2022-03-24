@@ -14,7 +14,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_margin="8dp"
-        android:layout_height="450dp"
+        android:layout_height="300dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/title_img" />
 
@@ -42,23 +42,23 @@
         android:text= "@string/desc_ps"/>
 
 
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/logo_trade" />
+<!--    <ImageView-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="250dp"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:src="@drawable/logo_trade" />-->
 
-    <TextView
-        android:padding="5dp"
-        android:textStyle="bold"
-        android:fontFamily="@font/questrial"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:textAlignment="gravity"
-        android:gravity="center_horizontal"
-        android:text= "@string/desc"/>
+<!--    <TextView-->
+<!--        android:padding="5dp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:fontFamily="@font/questrial"-->
+<!--       android:layout_width="match_parent"-->
+<!--       android:layout_height="wrap_content"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textAlignment="gravity"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:text= "@string/desc"/>-->
 
 
     <androidx.viewpager2.widget.ViewPager2
@@ -68,6 +68,9 @@
           android:layout_height="match_parent"
           android:paddingStart="80dp"
           android:paddingEnd="80dp"/>
+
+
+
 <!--    <ImageView-->
 <!--        android:layout_width="250dp"-->
 <!--        android:layout_height="0dp"-->

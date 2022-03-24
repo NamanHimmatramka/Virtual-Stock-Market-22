@@ -24,12 +24,11 @@ private Handler slideHandler=new Handler();
 
         viewPager2=findViewById(R.id.viewPagerImageSlider);
         List<SliderItem> sliderItems=new ArrayList<>();
-        sliderItems.add(new SliderItem(R.drawable.imag_sp16));
-        sliderItems.add(new SliderItem(R.drawable.imag_sp15));
-        sliderItems.add(new SliderItem(R.drawable.imag_sp14));
-        sliderItems.add(new SliderItem(R.drawable.imag_sp13));
-        sliderItems.add(new SliderItem(R.drawable.imag_sp12));
-        sliderItems.add(new SliderItem(R.drawable.imag_sp11));
+        sliderItems.add(new SliderItem(R.drawable.tit_img1));
+        sliderItems.add(new SliderItem(R.drawable.tit_img2));
+        sliderItems.add(new SliderItem(R.drawable.tit_img3));
+        sliderItems.add(new SliderItem(R.drawable.tit_img4));
+        sliderItems.add(new SliderItem(R.drawable.tit_img5));
 
 
 
