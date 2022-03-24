@@ -75,8 +75,10 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                             double tradeValue = Integer.parseInt(s.toString()) * stocks.get(position).getStockPriceInRupees();
                             holder.tradeValueNumber.setText(tradeValue + "");
                         }
-                        else
+                        else if(s.toString().isEmpty())
                             holder.tradeValueNumber.setText("0");
+                        else
+                            holder.tradeValueNumber.setText("");
                     }
                 });
             }
