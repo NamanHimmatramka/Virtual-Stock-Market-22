@@ -1,6 +1,7 @@
 package com.oculus.vsm;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.oculus.vsm.models.Important;
 import com.oculus.vsm.models.User;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,25 +41,37 @@ public class WaitingActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         leaderboard = findViewById(R.id.leaderboardRV);
         leaderboard.setLayoutManager(new LinearLayoutManager(this));
-        db.collection("users").orderBy("netWorth", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        db.collection("users").orderBy("netWorth", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                if(!queryDocumentSnapshots.isEmpty()){
-                    List<DocumentSnapshot> usersDs = queryDocumentSnapshots.getDocuments();
-                    ArrayList<User> users = new ArrayList<>();
-                    for(DocumentSnapshot ds : usersDs){
-                        users.add(ds.toObject(User.class));
-                    }
-                    LeaderboardRVAdapter adapter = new LeaderboardRVAdapter(users);
-                    leaderboard.setAdapter(adapter);
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                List<DocumentSnapshot> usersDs = value.getDocuments();
+                ArrayList<User> users = new ArrayList<>();
+                for(DocumentSnapshot ds : usersDs){
+                    users.add(ds.toObject(User.class));
                 }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
+                LeaderboardRVAdapter adapter = new LeaderboardRVAdapter(users);
+                leaderboard.setAdapter(adapter);
             }
         });
+//        db.collection("users").orderBy("netWorth", Query.Direction.DESCENDING).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//            @Override
+//            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                if(!queryDocumentSnapshots.isEmpty()){
+//                    List<DocumentSnapshot> usersDs = queryDocumentSnapshots.getDocuments();
+//                    ArrayList<User> users = new ArrayList<>();
+//                    for(DocumentSnapshot ds : usersDs){
+//                        users.add(ds.toObject(User.class));
+//                    }
+//                    LeaderboardRVAdapter adapter = new LeaderboardRVAdapter(users);
+//                    leaderboard.setAdapter(adapter);
+//                }
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//
+//            }
+//        });
         nextRound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

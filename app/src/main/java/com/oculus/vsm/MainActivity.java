@@ -75,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         long duration = TimeUnit.MINUTES.toMillis(5);
+        if(roundNo == 1) {
+            duration = TimeUnit.MINUTES.toMillis(10);
+        }
         new CountDownTimer(duration, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {

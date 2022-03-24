@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.oculus.vsm.models.InsiderNews;
 import com.oculus.vsm.models.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -65,23 +66,34 @@ public PowercardsFragment(){
         if(insiderTradingThisRound[0] == 1){
             insiderIV.setAlpha((float) 0.3);
             insiderTV.setVisibility(View.VISIBLE);
-            switch (roundNo) {
-                case 1:
-                    insiderTV.setText("Major Fuel running vehicle company Toyota was shut down. \n");
-                    break;
-                case 2:
-                    insiderTV.setText("Indian Government caught and burnt down 2 tons of drugs which were caught on the Goa Port. \n");
-                    break;
-                case 3:
-                    insiderTV.setText("Many of Gaitonde’s buildings were found illegal and were sealed by the CBI. \n");
-                    break;
-                case 4:
-                    insiderTV.setText("Jeff Bezos launched his brand new venture called Amazon jewelries. \n");
-                    break;
-                case 5:
-                    insiderTV.setText(" 364 people died in a plane crash which was later found that it happened because of poor maintenance issues.  \n");
-                    break;
-            }
+            db.collection("news").document("insider").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    InsiderNews news = documentSnapshot.toObject(InsiderNews.class);
+                    switch (roundNo) {
+                        case 1:
+                            insiderTV.setText(news.round1);
+                            break;
+                        case 2:
+                            insiderTV.setText(news.round2);
+                            break;
+                        case 3:
+                            insiderTV.setText(news.round3);
+                            break;
+                        case 4:
+                            insiderTV.setText(news.round4);
+                            break;
+                        case 5:
+                            insiderTV.setText(news.round5);
+                            break;
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                }
+            });
         }
         loanCV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,25 +175,36 @@ public PowercardsFragment(){
                                     public void onClick(DialogInterface dialog, int which) {
                                         insiderIV.setAlpha((float) 0.3);
                                         insiderTV.setVisibility(View.VISIBLE);
-                                        switch (roundNo) {
-                                            case 1:
-                                                insiderTV.setText("Major Fuel running vehicle company Toyota was shut down. \n");
-                                                break;
-                                            case 2:
-                                                insiderTV.setText("Indian Government caught and burnt down 2 tons of drugs which were caught on the Goa Port. \n");
-                                                break;
-                                            case 3:
-                                                insiderTV.setText("Many of Gaitonde’s buildings were found illegal and were sealed by the CBI. \n");
-                                                break;
-                                            case 4:
-                                                insiderTV.setText("Jeff Bezos launched his brand new venture called Amazon jewelries. \n");
-                                                break;
-                                            case 5:
-                                                insiderTV.setText(" 364 people died in a plane crash which was later found that it happened because of poor maintenance issues.  \n");
-                                                break;
-                                        }
-                                        user.insiderTrading = 0;
-                                        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
+                                        db.collection("news").document("insider").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                InsiderNews news = documentSnapshot.toObject(InsiderNews.class);
+                                                switch (roundNo) {
+                                                    case 1:
+                                                        insiderTV.setText(news.round1);
+                                                        break;
+                                                    case 2:
+                                                        insiderTV.setText(news.round2);
+                                                        break;
+                                                    case 3:
+                                                        insiderTV.setText(news.round3);
+                                                        break;
+                                                    case 4:
+                                                        insiderTV.setText(news.round4);
+                                                        break;
+                                                    case 5:
+                                                        insiderTV.setText(news.round5);
+                                                        break;
+                                                }
+                                                user.insiderTrading = 0;
+                                                db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+
+                                            }
+                                        });
                                     }
                                 }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                                     @Override
