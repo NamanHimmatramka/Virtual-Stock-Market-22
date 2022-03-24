@@ -33,8 +33,7 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="desc">trade_o_live is educating people across India about Stock Market Trading and Investing Since 2021 . The Founder and CEO , Mr Priyanshu Shirsat has won IFA ( Youngest Entrepreneur In Stock Market 2021) and has 5+ years of experience in stock market. We have trained 500+ Traders and Investors . Featured on ZEE BUSINESS (IFA AWARDS 2021)</string>
-
+    <string name="dsc_title">In this course you will learn how human psychology plays an important role in Stock Market</string>
+    <string name="desc_ps">As a trader you must have gone through emotions. The course will help you to control your emotions during the trading and reduce your losses while making your overall portfolio</string>
 
 </resources>
-
-
