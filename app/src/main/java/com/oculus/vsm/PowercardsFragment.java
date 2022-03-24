@@ -57,12 +57,6 @@ public PowercardsFragment(){
         loanIV=view.findViewById(R.id.IV_loan);
         insiderCV=view.findViewById(R.id.CV_insider);
         loanCV=view.findViewById(R.id.CV_LOAN);
-        insiderCV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                insiderFunction(view);
-            }
-        });
         if(insiderTradingThisRound[0] == 1){
             insiderIV.setAlpha((float) 0.3);
             insiderTV.setVisibility(View.VISIBLE);
@@ -95,15 +89,38 @@ public PowercardsFragment(){
                 }
             });
         }
+        insiderCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                insiderFunction(view);
+            }
+        });
+        if(loanACapThisRound[0] == 1) {
+            loanIV.setAlpha((float) 0.3);
+        }
         loanCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 loanFunction(view);
             }
         });
-        if(loanACapThisRound[0] == 1) {
-            loanIV.setAlpha((float) 0.3);
-        }
+        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                User user = documentSnapshot.toObject(User.class);
+                if(user.insiderTrading == 0){
+                    insiderIV.setAlpha((float)0.3);
+                }
+                if(user.loanACap != 1){
+                    loanIV.setAlpha((float)0.3);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
         return view;
     }
 
