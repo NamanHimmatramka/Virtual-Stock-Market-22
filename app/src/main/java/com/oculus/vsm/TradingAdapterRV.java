@@ -3,6 +3,8 @@ package com.oculus.vsm;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.oculus.vsm.models.Currency;
 import com.oculus.vsm.models.Stock;
 import com.oculus.vsm.models.User;
@@ -28,6 +31,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewHolder> {
@@ -47,7 +51,41 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                 holder.owned.setText(user.noOfStocksOwned.get(position)+"");
             }
         });
+        db.collection("stocks").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<DocumentSnapshot> ds = queryDocumentSnapshots.getDocuments();
+                ArrayList<Stock> stocks = new ArrayList<>();
+                for(DocumentSnapshot dsa : ds){
+                    stocks.add(dsa.toObject(Stock.class));
+                }
+                holder.buyQuantity.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        if(!s.toString().isEmpty()) {
+                            double tradeValue = Integer.parseInt(s.toString()) * stocks.get(position).getStockPriceInRupees();
+                            holder.tradeValueNumber.setText(tradeValue + "");
+                        }
+                        else
+                            holder.tradeValueNumber.setText("0");
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
         db.collection("crypto").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -207,26 +245,26 @@ public class TradingAdapterRV extends FirestoreRecyclerAdapter<Stock, StockViewH
                             @Override
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
                                 User user = documentSnapshot.toObject(User.class);
-                                if(!holder.sellQuantity.getText().toString().equals("")) {
+                                if(!holder.buyQuantity.getText().toString().equals("")) {
                                     int temp2 = user.noOfStocksOwned.get(position);
-                                    boolean successful = temp2>=Integer.parseInt(holder.sellQuantity.getText().toString());
+                                    boolean successful = temp2>=Integer.parseInt(holder.buyQuantity.getText().toString());
                                     if (sellCurrency == currency1) {
-                                        double temp = user.currencyOwned.get(0) + (sellPrice * (Integer.parseInt(holder.sellQuantity.getText().toString())));
+                                        double temp = user.currencyOwned.get(0) + (sellPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())));
                                         if(successful)
                                             user.currencyOwned.set(0, temp);
                                     }
 
                                     if(successful){
-                                        user.noOfStocksOwned.set(position, temp2 - Integer.parseInt(holder.sellQuantity.getText().toString()));
+                                        user.noOfStocksOwned.set(position, temp2 - Integer.parseInt(holder.buyQuantity.getText().toString()));
                                         AlertDialog alertDialog = new AlertDialog.Builder(context)
                                                 .setTitle("Confirmation")
-                                                .setMessage("Are you sure you want to sell these stocks for "+ sellPrice * (Integer.parseInt(holder.sellQuantity.getText().toString())))
+                                                .setMessage("Are you sure you want to sell these stocks for "+ sellPrice * (Integer.parseInt(holder.buyQuantity.getText().toString())))
                                                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                                     @Override
                                                     public void onClick(DialogInterface dialog, int which) {
                                                         db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
                                                         Toast.makeText(context, "Transaction Successful", Toast.LENGTH_LONG).show();
-                                                        holder.sellQuantity.setText("");
+                                                        holder.buyQuantity.setText("");
                                                     }
                                                 })
                                                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -326,7 +364,8 @@ class StockViewHolder extends RecyclerView.ViewHolder {
 //    Spinner buySpinner;
 //    Spinner sellSpinner;
     EditText buyQuantity;
-    EditText sellQuantity;
+    TextView tradeValueNumber;
+    TextView tradeValueText;
     public StockViewHolder(View itemView) {
         super(itemView);
         owned=itemView.findViewById(R.id.TV_trade_owned);
@@ -339,7 +378,8 @@ class StockViewHolder extends RecyclerView.ViewHolder {
 //        buySpinner=itemView.findViewById(R.id.Spin_buy);
 //        sellSpinner=itemView.findViewById(R.id.Spin_sell);
         buyQuantity=itemView.findViewById(R.id.ET_Buy);
-        //sellQuantity=itemView.findViewById(R.id.ET_Sell);
+        tradeValueNumber = itemView.findViewById(R.id.TV_calculated_valu);
+        tradeValueText = itemView.findViewById(R.id.tv_trade_value);
     }
 }
 
