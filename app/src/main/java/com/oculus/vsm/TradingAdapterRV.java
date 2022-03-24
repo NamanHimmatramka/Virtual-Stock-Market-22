@@ -339,7 +339,7 @@ class StockViewHolder extends RecyclerView.ViewHolder {
 //        buySpinner=itemView.findViewById(R.id.Spin_buy);
 //        sellSpinner=itemView.findViewById(R.id.Spin_sell);
         buyQuantity=itemView.findViewById(R.id.ET_Buy);
-        sellQuantity=itemView.findViewById(R.id.ET_Sell);
+        //sellQuantity=itemView.findViewById(R.id.ET_Sell);
     }
 }
 

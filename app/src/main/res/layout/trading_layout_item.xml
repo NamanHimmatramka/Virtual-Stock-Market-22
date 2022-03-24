@@ -74,20 +74,18 @@
         android:inputType="number"
         android:textColor="@color/black"
         android:textColorHint="#777676"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="@+id/BT_Buy"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/BT_sell"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
         app:layout_constraintStart_toEndOf="@+id/BT_Buy"
-        app:layout_constraintTop_toTopOf="@+id/BT_Buy"
-        app:layout_constraintVertical_bias="0.476" />
+        app:layout_constraintTop_toBottomOf="@+id/BT_Buy"
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/BT_sell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/sell_button"
         android:fontFamily="@font/questrial"
@@ -97,40 +95,11 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ET_Sell"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/BT_Buy"
+        app:layout_constraintStart_toStartOf="@+id/BT_Buy"
         app:layout_constraintTop_toBottomOf="@+id/BT_Buy" />
 
-    <EditText
-        android:id="@+id/ET_Sell"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/input_field"
-        android:ems="10"
-        android:fontFamily="@font/questrial"
-        android:hint="Quantity"
-        android:inputType="number"
-        android:textColor="@color/black"
-        android:textColorHint="#777676"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/BT_sell"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
-        app:layout_constraintStart_toEndOf="@+id/BT_sell"
-        app:layout_constraintTop_toTopOf="@+id/BT_sell"
-        app:layout_constraintVertical_bias="0.428" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/ET_Sell"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ET_Sell"
-        app:layout_constraintTop_toTopOf="@+id/ET_Sell"/>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -176,6 +145,31 @@
         app:layout_constraintBottom_toBottomOf="@+id/TV_trade_owned"
         app:layout_constraintEnd_toStartOf="@+id/TV_trade_owned"
         app:layout_constraintTop_toTopOf="@+id/TV_trade_owned" />
+
+    <TextView
+        android:id="@+id/TV_calculated_valu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:padding="8dp"
+        android:text="0"
+        android:textSize="12sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_trade_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Trade Value: "
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/TV_calculated_valu"
+        app:layout_constraintEnd_toStartOf="@+id/TV_calculated_valu"
+        app:layout_constraintTop_toTopOf="@+id/TV_calculated_valu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
