@@ -36,9 +36,6 @@ private Handler slideHandler=new Handler();
         sliderItems2.add(new SliderItem(R.drawable.image_spnils1));
         sliderItems2.add(new SliderItem(R.drawable.image_spnils2));
         sliderItems2.add(new SliderItem(R.drawable.image_spnils3));
-        sliderItems2.add(new SliderItem(R.drawable.image_spnils4));
-        sliderItems2.add(new SliderItem(R.drawable.image_spnils5));
-        sliderItems2.add(new SliderItem(R.drawable.image_spnils6));
 
         viewPager2.setAdapter(new SliderAdapter(sliderItems,viewPager2));
         viewPager2.setClipToPadding(false);

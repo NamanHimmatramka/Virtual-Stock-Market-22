@@ -28,18 +28,12 @@
         android:textColor="@color/black"
         android:textAlignment="gravity"
         android:gravity="center_horizontal"
-        android:text= "@string/dsc_title"/>
-    <TextView
-        android:padding="5dp"
-        android:textStyle="bold"
-        android:fontFamily="@font/questrial"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:textAlignment="gravity"
-        android:gravity="center_horizontal"
-        android:text= "@string/desc_ps"/>
+        android:text= "Mr. Nilesh Naresh Patil is an NLP Expert and NISM certified trader with 10+ years of trading experience and 5+ years of training experience.
+He is the Founder and CEO of NILS Enterprises.
+To date, he has trained 15,000+ students through seminars and 1000+ in one-on-one sessions.
+In his training, Nilesh teaches his students the secret behind using psychology in the stock market while doing the LIVE TRADING in front of them. He also gives them a money-back offer which guarantees that the fees paid by them will be earned back by them by the end of the support period considering they follow his teachings, and if someone is still not profitable Nilesh will pay them back their fees from his pocket.
+Recently, Mr. Nilesh Patil has been felicitated by Mid-Day India, Times group and Zee Media for his exemplary contribution in the field of Share Market Training."/>
+
 
     <androidx.viewpager2.widget.ViewPager2
         android:layout_marginTop="30dp"

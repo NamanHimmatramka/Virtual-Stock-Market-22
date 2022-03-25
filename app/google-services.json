@@ -22,6 +22,80 @@
           }
         },
         {
+          "client_id": "18353674681-l0rluau1ftto3en3vfid81rd0scmjhhs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vsm22",
+            "certificate_hash": "5943707975b6a0cfdd5a2ad220803f71c1a62e15"
+          }
+        },
+        {
+          "client_id": "18353674681-0f91c1371fudbe7mk2ap46ptmm73daek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANk3QoBxwtwtQdYA9U1IG50DU_OF8diQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18353674681-0f91c1371fudbe7mk2ap46ptmm73daek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18353674681:android:71cb89a099e2db44affe68",
+        "android_client_info": {
+          "package_name": "com.example.vsmadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18353674681-0f91c1371fudbe7mk2ap46ptmm73daek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANk3QoBxwtwtQdYA9U1IG50DU_OF8diQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18353674681-0f91c1371fudbe7mk2ap46ptmm73daek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18353674681:android:6853243a02465c2eaffe68",
+        "android_client_info": {
+          "package_name": "com.oculus.vsm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18353674681-5lhu97jghjknn310jhga9m28pmf9piqt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.oculus.vsm",
+            "certificate_hash": "093a158a88a14255d851e179a8058bd248eb66bd"
+          }
+        },
+        {
           "client_id": "18353674681-0f91c1371fudbe7mk2ap46ptmm73daek.apps.googleusercontent.com",
           "client_type": 3
         }

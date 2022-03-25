@@ -143,7 +143,7 @@ public PowercardsFragment(){
                                     loanACapThisRound[0] = 1;
                                     loanIV.setAlpha((float) 0.3);
                                     double old = user.currencyOwned.get(0);
-                                    double newValue = old + 0.4*old;
+                                    double newValue = old + 1*old;
                                     user.loanBaseAmount=old;
                                     user.currencyOwned.set(0,newValue);
                                     user.loanACap = 2;

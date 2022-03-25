@@ -31,7 +31,7 @@ private FirebaseFirestore db;
                 User user = documentSnapshot.toObject(User.class);
                 if(user.loanACap == 2){
                     double old = user.currencyOwned.get(0);
-                    double newValue = old - 0.5*user.loanBaseAmount;
+                    double newValue = old - 1.05*user.loanBaseAmount;
                     user.currencyOwned.set(0, newValue);
                     user.loanACap=0;
                     db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
